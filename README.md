@@ -34,6 +34,14 @@ Choose either single SENAITE instance or ZEO cluster.
 
 **It is inadvisable to use following configurations for production.**
 
+### Adding senaite.OESinterface
+On the latest/buildout.cfg file
+Add/change YOUR_OWN_TOKEN to your own token that you have to create
+```bash
+senaite.OESinterface = git https://YOUR_OWN_TOKEN@github.com/LIMSInputOutput/senaite.OESinterface.git branch=main
+```
+Docs on [how to create a token](https://docs.github.com/en/enterprise-server@3.6/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
 
 ### Standalone SENAITE Instance
 
@@ -43,7 +51,7 @@ Build and start the latest SENAITE container, based on [Debian](https://www.debi
 
 ```bash
 $ git clone https://github.com/senaite/senaite.docker
-$ cd senaite.docker/2.4.0
+$ cd senaite.docker/latest
 $ docker build -t senaite .
 $ docker run --rm --name senaite -p 8080:8080 senaite
 ```
