@@ -3,29 +3,9 @@
 [SENAITE](https://www.senaite.com) is a free and open source LIMS built on top of
 [Plone](https://plone.org) and the [Zope application server](https://www.zope.org).
 
-This repository is based [plone.docker](https://github.com/plone/plone.docker) –
+This repository is based [plone.docker](https://github.com/plone/plone.docker)
+and [senaite.docker](https://github.com/senaite/senaite.docker) -
 Thanks to the great work of http://github.com/avoinea and the other contributors.
-
-### Try SENAITE
-
-Click the _Try in PWD_ button below to get 4 hours to try SENAITE LIMS:
-
-NOTE: A [DockerHub](https://hub.docker.com/) account is needed.
-
-A sandbox environment will be created after the "Start" button was pressed.
-This will take about 2-3 Minutes and the final screen will display a button
-with the port number `8080` displayed on it. This will open the SENAITE site
-in the webbrower.
-
-NOTE: If the link to port `8080` is not displayed on the site, you have to click
-      the **OPEN PORT** button and enter `8080` in there.
-
-It might be that this site will not load immediately, because the server is
-still in startup process. Please wait and reload until the SENAITE site appears.
-
-**Authentication: `admin:admin`**
-
-[![Try in PWD](https://cdn.rawgit.com/play-with-docker/stacks/cff22438/assets/images/button.png)](http://play-with-docker.com?stack=https://raw.githubusercontent.com/senaite/senaite.docker/master/stack.yml)
 
 
 ## Usage
@@ -35,13 +15,10 @@ Choose either single SENAITE instance or ZEO cluster.
 **It is inadvisable to use following configurations for production.**
 
 ### Adding senaite.OESinterface
-On the latest/buildout.cfg file
-Add/change YOUR_OWN_TOKEN to your own token that you have to create
+git clone the add-on, e.g
 ```bash
-senaite.OESinterface = git https://YOUR_OWN_TOKEN@github.com/LIMSInputOutput/senaite.OESinterface.git branch=main
+git clone https://github.com/LIMSInputOutput/senaite.OESinterface.git
 ```
-Docs on [how to create a token](https://docs.github.com/en/enterprise-server@3.6/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
-
 
 ### Standalone SENAITE Instance
 
@@ -50,7 +27,7 @@ Standalone instances are best suited for testing SENAITE and development.
 Build and start the latest SENAITE container, based on [Debian](https://www.debian.org/).
 
 ```bash
-$ git clone https://github.com/senaite/senaite.docker
+$ git clone https://github.com/LIMSInputOutput/senaite.docker
 $ cd senaite.docker/latest
 $ docker build -t senaite .
 $ docker run --rm --name senaite -p 8080:8080 senaite

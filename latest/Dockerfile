@@ -14,6 +14,7 @@ ENV PLONE_MAJOR=5.2 \
     SENAITE_HOME=/home/senaite \
     SENAITE_USER=senaite \
     SENAITE_INSTANCE_HOME=/home/senaite/senaitelims \
+    SENAITE_INSTANCE_SRC=/home/senaite/senaitelims/src \
     SENAITE_DATA=/data \
     SENAITE_FILESTORAGE=/data/filestorage \
     SENAITE_BLOBSTORAGE=/data/blobstorage
@@ -26,6 +27,10 @@ RUN mkdir -p $SENAITE_INSTANCE_HOME $SENAITE_FILESTORAGE $SENAITE_BLOBSTORAGE
 
 # Copy Buildout
 COPY requirements.txt buildout.cfg $SENAITE_INSTANCE_HOME/
+
+# Cope add-on
+COPY senaite.OESinterface $SENAITE_INSTANCE_SRC/senaite.OESinterface
+RUN chown -R senaite:senaite $SENAITE_INSTANCE_SRC/senaite.OESinterface
 
 # Copy the build dependencies and startup scripts
 COPY build_deps.txt run_deps.txt docker-initialize.py docker-entrypoint.sh /
