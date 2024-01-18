@@ -4,7 +4,7 @@ FROM python:2.7-slim-buster
 # Set one or more individual labels
 LABEL maintainer="Ramon Bartl"
 LABEL email="rb@ridingbytes.com"
-LABEL senaite.core.version="latest"
+LABEL senaite.core.version="v2.5.0"
 
 # Set environment variables
 ENV PLONE_MAJOR=5.2 \
@@ -14,7 +14,6 @@ ENV PLONE_MAJOR=5.2 \
     SENAITE_HOME=/home/senaite \
     SENAITE_USER=senaite \
     SENAITE_INSTANCE_HOME=/home/senaite/senaitelims \
-    SENAITE_INSTANCE_SRC=/home/senaite/senaitelims/src \
     SENAITE_DATA=/data \
     SENAITE_FILESTORAGE=/data/filestorage \
     SENAITE_BLOBSTORAGE=/data/blobstorage
@@ -28,16 +27,12 @@ RUN mkdir -p $SENAITE_INSTANCE_HOME $SENAITE_FILESTORAGE $SENAITE_BLOBSTORAGE
 # Copy Buildout
 COPY requirements.txt buildout.cfg $SENAITE_INSTANCE_HOME/
 
-# Cope add-on
-COPY senaite.OESinterface $SENAITE_INSTANCE_SRC/senaite.OESinterface
-RUN chown -R senaite:senaite $SENAITE_INSTANCE_SRC/senaite.OESinterface
-
 # Copy the build dependencies and startup scripts
 COPY build_deps.txt run_deps.txt docker-initialize.py docker-entrypoint.sh /
 
 # Note: we concatenate all commands to avoid multiple layer generation and reduce the image size
 RUN apt-get update \
-    # Install system packages
+    # Install system pakages
     && apt-get install -y --no-install-recommends $(grep -vE "^\s*#" /build_deps.txt | tr "\n" " ") \
     && apt-get install -y --no-install-recommends $(grep -vE "^\s*#" /run_deps.txt | tr "\n" " ") \
     # Fetch unified installer
