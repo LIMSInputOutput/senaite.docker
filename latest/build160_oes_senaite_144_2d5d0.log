@@ -1,0 +1,1783 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.75kB 0.1s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/python:2.7-slim-buster
+#2 ...
+
+#3 [auth] library/python:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:2.7-slim-buster
+#2 DONE 2.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context:
+#4 transferring context: 2B 0.2s done
+#4 DONE 0.2s
+
+#5 [1/9] FROM docker.io/library/python:2.7-slim-buster@sha256:6c1ffdff499e29ea663e6e67c9b6b9a3b401d554d2c9f061f9a45344e3992363
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 186.38kB 0.9s done
+#6 DONE 0.9s
+
+#7 [2/9] RUN useradd --system -m -d /home/senaite -U -u 500 senaite
+#7 CACHED
+
+#8 [3/9] RUN mkdir -p /home/senaite/senaitelims /data/filestorage /data/blobstorage
+#8 CACHED
+
+#9 [4/9] COPY requirements.txt buildout.cfg /home/senaite/senaitelims/
+#9 DONE 0.0s
+
+#10 [5/9] COPY senaite.OESinterface /home/senaite/senaitelims/src/senaite.OESinterface
+#10 DONE 0.0s
+
+#11 [6/9] RUN chown -R senaite:senaite /home/senaite/senaitelims/src/senaite.OESinterface
+#11 DONE 0.3s
+
+#12 [7/9] COPY build_deps.txt run_deps.txt docker-initialize.py docker-entrypoint.sh /
+#12 DONE 0.0s
+
+#13 [8/9] RUN apt-get update     && apt-get install -y --no-install-recommends $(grep -vE "^\s*#" /build_deps.txt | tr "\n" " ")     && apt-get install -y --no-install-recommends $(grep -vE "^\s*#" /run_deps.txt | tr "\n" " ")     && wget -O Plone.tgz https://launchpad.net/plone/5.2/5.2.14/+download/Plone-5.2.14-UnifiedInstaller-1.0.tgz     && echo "e8e1f774f069026319be3038631e0734 Plone.tgz" | md5sum -c -     && tar -xzf /Plone.tgz     && cp -rv Plone-5.2.14-UnifiedInstaller-1.0/base_skeleton/* /home/senaite/senaitelims     && cp -v Plone-5.2.14-UnifiedInstaller-1.0/buildout_templates/buildout.cfg /home/senaite/senaitelims/buildout-base.cfg     && rm -rf Plone-5.2.14-UnifiedInstaller-1.0 Plone.tgz     && cd /home/senaite/senaitelims     && pip install -r requirements.txt     && buildout     && ln -s /data/filestorage/ var/filestorage     && ln -s /data/blobstorage/ var/blobstorage     && chown -R senaite:senaite /home/senaite /data     && apt-get purge -y --auto-remove $(grep -vE "^\s*#" /build_deps.txt  | tr "\n" " ")     && rm -rf //home/senaite/buildout-cache     && rm -rf /var/lib/apt/lists/*
+#13 0.791 Get:1 http://security.debian.org/debian-security buster/updates InRelease [34.8 kB]
+#13 0.791 Get:2 http://deb.debian.org/debian buster InRelease [122 kB]
+#13 1.163 Get:3 http://deb.debian.org/debian buster-updates InRelease [56.6 kB]
+#13 1.220 Get:4 http://security.debian.org/debian-security buster/updates/main amd64 Packages [610 kB]
+#13 3.768 Get:5 http://deb.debian.org/debian buster/main amd64 Packages [7909 kB]
+#13 5.718 Get:6 http://deb.debian.org/debian buster-updates/main amd64 Packages [8788 B]
+#13 6.314 Fetched 8741 kB in 6s (1469 kB/s)
+#13 6.314 Reading package lists...
+#13 6.676 Reading package lists...
+#13 7.016 Building dependency tree...
+#13 7.079 Reading state information...
+#13 7.152 The following additional packages will be installed:
+#13 7.152   binutils binutils-common binutils-x86-64-linux-gnu bzip2 cpp cpp-8 gcc-8
+#13 7.152   icu-devtools libasan5 libatomic1 libbinutils libbz2-1.0 libc-dev-bin libc6
+#13 7.152   libcc1-0 libdpkg-perl libgcc-8-dev libgdbm-compat4 libglib2.0-0 libgomp1
+#13 7.152   libicu-dev libicu63 libisl19 libitm1 libjbig-dev libjbig0 libjpeg62-turbo
+#13 7.153   liblsan0 liblzma-dev liblzma5 libmpc3 libmpfr6 libmpx2 libopenjp2-7
+#13 7.153   libpcre16-3 libpcre2-8-0 libpcre32-3 libpcrecpp0v5 libperl5.28 libpsl5
+#13 7.153   libquadmath0 libssl1.1 libtiff-dev libtiff5 libtiffxx5 libtsan0 libubsan1
+#13 7.153   libwebp6 libxml2 libxslt1.1 linux-libc-dev make patch perl perl-base
+#13 7.153   perl-modules-5.28 pkg-config xz-utils zlib1g
+#13 7.153 Suggested packages:
+#13 7.153   binutils-doc bzip2-doc cpp-doc gcc-8-locales debian-keyring gcc-multilib
+#13 7.153   manpages-dev autoconf automake libtool flex bison gdb gcc-doc gcc-8-multilib
+#13 7.153   gcc-8-doc libgcc1-dbg libgomp1-dbg libitm1-dbg libatomic1-dbg libasan5-dbg
+#13 7.153   liblsan0-dbg libtsan0-dbg libubsan1-dbg libmpx2-dbg libquadmath0-dbg
+#13 7.153   glibc-doc libc-l10n locales gnupg | gnupg2 sensible-utils git bzr icu-doc
+#13 7.153   liblzma-doc libssl-doc make-doc ed diffutils-doc perl-doc
+#13 7.153   libterm-readline-gnu-perl | libterm-readline-perl-perl libb-debug-perl
+#13 7.153   liblocale-codes-perl
+#13 7.153 Recommended packages:
+#13 7.153   build-essential fakeroot gnupg | gnupg2 libalgorithm-merge-perl bzip2-doc
+#13 7.153   manpages manpages-dev libfile-fcntllock-perl liblocale-gettext-perl
+#13 7.153   libglib2.0-data shared-mime-info xdg-user-dirs publicsuffix
+#13 7.316 The following NEW packages will be installed:
+#13 7.316   binutils binutils-common binutils-x86-64-linux-gnu bzip2 cpp cpp-8 dpkg-dev
+#13 7.316   gcc gcc-8 icu-devtools libasan5 libatomic1 libbinutils libbz2-dev
+#13 7.316   libc-dev-bin libc6-dev libcc1-0 libdpkg-perl libffi-dev libgcc-8-dev
+#13 7.316   libgdbm-compat4 libglib2.0-0 libgomp1 libicu-dev libicu63 libisl19 libitm1
+#13 7.316   libjbig-dev libjbig0 libjpeg62-turbo libjpeg62-turbo-dev liblsan0
+#13 7.316   liblzma-dev libmpc3 libmpfr6 libmpx2 libopenjp2-7 libopenjp2-7-dev
+#13 7.316   libpcre16-3 libpcre2-8-0 libpcre3-dev libpcre32-3 libpcrecpp0v5 libperl5.28
+#13 7.316   libpsl5 libquadmath0 libssl-dev libtiff-dev libtiff5 libtiff5-dev libtiffxx5
+#13 7.316   libtsan0 libubsan1 libwebp6 libxml2 libxml2-dev libxslt1-dev libxslt1.1
+#13 7.316   linux-libc-dev make patch perl perl-modules-5.28 pkg-config wget xz-utils
+#13 7.316   zlib1g-dev
+#13 7.316 The following packages will be upgraded:
+#13 7.317   libbz2-1.0 libc6 liblzma5 libssl1.1 perl-base zlib1g
+#13 7.967 6 upgraded, 67 newly installed, 0 to remove and 38 not upgraded.
+#13 7.967 Need to get 77.3 MB of archives.
+#13 7.967 After this operation, 294 MB of additional disk space will be used.
+#13 7.967 Get:1 http://deb.debian.org/debian buster/main amd64 perl-base amd64 5.28.1-6+deb10u1 [1514 kB]
+#13 8.605 Get:2 http://security.debian.org/debian-security buster/updates/main amd64 libc6 amd64 2.28-10+deb10u4 [2869 kB]
+#13 9.749 Get:3 http://security.debian.org/debian-security buster/updates/main amd64 libbz2-1.0 amd64 1.0.6-9.2~deb10u2 [45.4 kB]
+#13 9.801 Get:4 http://security.debian.org/debian-security buster/updates/main amd64 zlib1g amd64 1:1.2.11.dfsg-1+deb10u2 [90.9 kB]
+#13 10.06 Get:5 http://security.debian.org/debian-security buster/updates/main amd64 libssl1.1 amd64 1.1.1n-0+deb10u6 [1552 kB]
+#13 10.12 Get:6 http://deb.debian.org/debian buster/main amd64 perl-modules-5.28 all 5.28.1-6+deb10u1 [2873 kB]
+#13 10.29 Get:7 http://security.debian.org/debian-security buster/updates/main amd64 bzip2 amd64 1.0.6-9.2~deb10u2 [48.5 kB]
+#13 10.29 Get:8 http://security.debian.org/debian-security buster/updates/main amd64 libxml2 amd64 2.9.4+dfsg1-7+deb10u6 [690 kB]
+#13 10.38 Get:9 http://security.debian.org/debian-security buster/updates/main amd64 libpcre2-8-0 amd64 10.32-5+deb10u1 [213 kB]
+#13 10.45 Get:10 http://security.debian.org/debian-security buster/updates/main amd64 libglib2.0-0 amd64 2.58.3-2+deb10u6 [1263 kB]
+#13 10.60 Get:11 http://security.debian.org/debian-security buster/updates/main amd64 libc-dev-bin amd64 2.28-10+deb10u4 [276 kB]
+#13 10.98 Get:12 http://deb.debian.org/debian buster/main amd64 libgdbm-compat4 amd64 1.18.1-4 [44.1 kB]
+#13 11.01 Get:13 http://security.debian.org/debian-security buster/updates/main amd64 linux-libc-dev amd64 4.19.316-1 [1625 kB]
+#13 11.26 Get:14 http://deb.debian.org/debian buster/main amd64 libperl5.28 amd64 5.28.1-6+deb10u1 [3894 kB]
+#13 11.73 Get:15 http://deb.debian.org/debian buster/main amd64 perl amd64 5.28.1-6+deb10u1 [204 kB]
+#13 11.75 Get:16 http://deb.debian.org/debian buster/main amd64 liblzma5 amd64 5.2.4-1+deb10u1 [153 kB]
+#13 11.90 Get:17 http://security.debian.org/debian-security buster/updates/main amd64 libc6-dev amd64 2.28-10+deb10u4 [2694 kB]
+#13 12.17 Get:18 http://security.debian.org/debian-security buster/updates/main amd64 libbz2-dev amd64 1.0.6-9.2~deb10u2 [30.2 kB]
+#13 12.40 Get:19 http://security.debian.org/debian-security buster/updates/main amd64 libssl-dev amd64 1.1.1n-0+deb10u6 [1810 kB]
+#13 12.55 Get:20 http://security.debian.org/debian-security buster/updates/main amd64 libwebp6 amd64 0.6.1-2+deb10u3 [263 kB]
+#13 12.57 Get:21 http://security.debian.org/debian-security buster/updates/main amd64 libtiff5 amd64 4.1.0+git191117-2~deb10u9 [273 kB]
+#13 12.60 Get:22 http://security.debian.org/debian-security buster/updates/main amd64 libtiffxx5 amd64 4.1.0+git191117-2~deb10u9 [119 kB]
+#13 12.71 Get:23 http://security.debian.org/debian-security buster/updates/main amd64 zlib1g-dev amd64 1:1.2.11.dfsg-1+deb10u2 [210 kB]
+#13 12.71 Get:24 http://deb.debian.org/debian buster/main amd64 libicu63 amd64 63.1-6+deb10u3 [8293 kB]
+#13 12.80 Get:25 http://security.debian.org/debian-security buster/updates/main amd64 libtiff-dev amd64 4.1.0+git191117-2~deb10u9 [395 kB]
+#13 12.85 Get:26 http://security.debian.org/debian-security buster/updates/main amd64 libtiff5-dev amd64 4.1.0+git191117-2~deb10u9 [115 kB]
+#13 13.05 Get:27 http://security.debian.org/debian-security buster/updates/main amd64 libxml2-dev amd64 2.9.4+dfsg1-7+deb10u6 [785 kB]
+#13 13.12 Get:28 http://security.debian.org/debian-security buster/updates/main amd64 libxslt1.1 amd64 1.1.32-2.2~deb10u2 [236 kB]
+#13 13.30 Get:29 http://security.debian.org/debian-security buster/updates/main amd64 libxslt1-dev amd64 1.1.32-2.2~deb10u2 [519 kB]
+#13 14.04 Get:30 http://deb.debian.org/debian buster/main amd64 libpsl5 amd64 0.20.2-2 [53.7 kB]
+#13 14.05 Get:31 http://deb.debian.org/debian buster/main amd64 wget amd64 1.20.1-1.1 [902 kB]
+#13 14.13 Get:32 http://deb.debian.org/debian buster/main amd64 xz-utils amd64 5.2.4-1+deb10u1 [183 kB]
+#13 14.14 Get:33 http://deb.debian.org/debian buster/main amd64 binutils-common amd64 2.31.1-16 [2073 kB]
+#13 14.31 Get:34 http://deb.debian.org/debian buster/main amd64 libbinutils amd64 2.31.1-16 [478 kB]
+#13 14.64 Get:35 http://deb.debian.org/debian buster/main amd64 binutils-x86-64-linux-gnu amd64 2.31.1-16 [1823 kB]
+#13 15.50 Get:36 http://deb.debian.org/debian buster/main amd64 binutils amd64 2.31.1-16 [56.8 kB]
+#13 15.51 Get:37 http://deb.debian.org/debian buster/main amd64 libisl19 amd64 0.20-2 [587 kB]
+#13 15.58 Get:38 http://deb.debian.org/debian buster/main amd64 libmpfr6 amd64 4.0.2-1 [775 kB]
+#13 15.68 Get:39 http://deb.debian.org/debian buster/main amd64 libmpc3 amd64 1.1.0-1 [41.3 kB]
+#13 16.75 Get:40 http://deb.debian.org/debian buster/main amd64 cpp-8 amd64 8.3.0-6 [8914 kB]
+#13 18.92 Get:41 http://deb.debian.org/debian buster/main amd64 cpp amd64 4:8.3.0-1 [19.4 kB]
+#13 18.92 Get:42 http://deb.debian.org/debian buster/main amd64 libdpkg-perl all 1.19.8 [1415 kB]
+#13 19.13 Get:43 http://deb.debian.org/debian buster/main amd64 patch amd64 2.7.6-3+deb10u1 [126 kB]
+#13 19.15 Get:44 http://deb.debian.org/debian buster/main amd64 make amd64 4.2.1-1.2 [341 kB]
+#13 19.20 Get:45 http://deb.debian.org/debian buster/main amd64 dpkg-dev all 1.19.8 [1776 kB]
+#13 19.45 Get:46 http://deb.debian.org/debian buster/main amd64 libcc1-0 amd64 8.3.0-6 [46.6 kB]
+#13 19.46 Get:47 http://deb.debian.org/debian buster/main amd64 libgomp1 amd64 8.3.0-6 [75.8 kB]
+#13 19.47 Get:48 http://deb.debian.org/debian buster/main amd64 libitm1 amd64 8.3.0-6 [27.7 kB]
+#13 19.48 Get:49 http://deb.debian.org/debian buster/main amd64 libatomic1 amd64 8.3.0-6 [9032 B]
+#13 19.48 Get:50 http://deb.debian.org/debian buster/main amd64 libasan5 amd64 8.3.0-6 [362 kB]
+#13 19.53 Get:51 http://deb.debian.org/debian buster/main amd64 liblsan0 amd64 8.3.0-6 [131 kB]
+#13 19.54 Get:52 http://deb.debian.org/debian buster/main amd64 libtsan0 amd64 8.3.0-6 [283 kB]
+#13 19.58 Get:53 http://deb.debian.org/debian buster/main amd64 libubsan1 amd64 8.3.0-6 [120 kB]
+#13 19.60 Get:54 http://deb.debian.org/debian buster/main amd64 libmpx2 amd64 8.3.0-6 [11.4 kB]
+#13 19.64 Get:55 http://deb.debian.org/debian buster/main amd64 libquadmath0 amd64 8.3.0-6 [133 kB]
+#13 20.32 Get:56 http://deb.debian.org/debian buster/main amd64 libgcc-8-dev amd64 8.3.0-6 [2298 kB]
+#13 21.71 Get:57 http://deb.debian.org/debian buster/main amd64 gcc-8 amd64 8.3.0-6 [9452 kB]
+#13 24.09 Get:58 http://deb.debian.org/debian buster/main amd64 gcc amd64 4:8.3.0-1 [5196 B]
+#13 24.09 Get:59 http://deb.debian.org/debian buster/main amd64 pkg-config amd64 0.29-6 [63.5 kB]
+#13 24.09 Get:60 http://deb.debian.org/debian buster/main amd64 icu-devtools amd64 63.1-6+deb10u3 [189 kB]
+#13 24.13 Get:61 http://deb.debian.org/debian buster/main amd64 libffi-dev amd64 3.2.1-9 [156 kB]
+#13 24.16 Get:62 http://deb.debian.org/debian buster/main amd64 libicu-dev amd64 63.1-6+deb10u3 [9183 kB]
+#13 25.63 Get:63 http://deb.debian.org/debian buster/main amd64 libjbig0 amd64 2.1-3.1+b2 [31.0 kB]
+#13 25.63 Get:64 http://deb.debian.org/debian buster/main amd64 libjbig-dev amd64 2.1-3.1+b2 [30.5 kB]
+#13 25.63 Get:65 http://deb.debian.org/debian buster/main amd64 libjpeg62-turbo amd64 1:1.5.2-2+deb10u1 [133 kB]
+#13 25.65 Get:66 http://deb.debian.org/debian buster/main amd64 libjpeg62-turbo-dev amd64 1:1.5.2-2+deb10u1 [208 kB]
+#13 25.68 Get:67 http://deb.debian.org/debian buster/main amd64 liblzma-dev amd64 5.2.4-1+deb10u1 [210 kB]
+#13 25.71 Get:68 http://deb.debian.org/debian buster/main amd64 libopenjp2-7 amd64 2.3.0-2+deb10u2 [158 kB]
+#13 25.73 Get:69 http://deb.debian.org/debian buster/main amd64 libopenjp2-7-dev amd64 2.3.0-2+deb10u2 [44.4 kB]
+#13 25.73 Get:70 http://deb.debian.org/debian buster/main amd64 libpcre16-3 amd64 2:8.39-12 [259 kB]
+#13 25.77 Get:71 http://deb.debian.org/debian buster/main amd64 libpcre32-3 amd64 2:8.39-12 [250 kB]
+#13 25.85 Get:72 http://deb.debian.org/debian buster/main amd64 libpcrecpp0v5 amd64 2:8.39-12 [152 kB]
+#13 26.06 Get:73 http://deb.debian.org/debian buster/main amd64 libpcre3-dev amd64 2:8.39-12 [650 kB]
+#13 26.28 debconf: delaying package configuration, since apt-utils is not installed
+#13 26.30 Fetched 77.3 MB in 19s (4104 kB/s)
+#13 26.31 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6819 files and directories currently installed.)
+#13 26.33 Preparing to unpack .../perl-base_5.28.1-6+deb10u1_amd64.deb ...
+#13 26.34 Unpacking perl-base (5.28.1-6+deb10u1) over (5.28.1-6) ...
+#13 27.57 Setting up perl-base (5.28.1-6+deb10u1) ...
+#13 27.59 Selecting previously unselected package perl-modules-5.28.
+#13 27.59 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6819 files and directories currently installed.)
+#13 27.60 Preparing to unpack .../perl-modules-5.28_5.28.1-6+deb10u1_all.deb ...
+#13 27.60 Unpacking perl-modules-5.28 (5.28.1-6+deb10u1) ...
+#13 27.85 Preparing to unpack .../libc6_2.28-10+deb10u4_amd64.deb ...
+#13 27.91 debconf: unable to initialize frontend: Dialog
+#13 27.91 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#13 27.91 debconf: falling back to frontend: Readline
+#13 27.96 Unpacking libc6:amd64 (2.28-10+deb10u4) over (2.28-10) ...
+#13 28.71 Setting up libc6:amd64 (2.28-10+deb10u4) ...
+#13 28.76 debconf: unable to initialize frontend: Dialog
+#13 28.76 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#13 28.76 debconf: falling back to frontend: Readline
+#13 29.88 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 8190 files and directories currently installed.)
+#13 29.88 Preparing to unpack .../libbz2-1.0_1.0.6-9.2~deb10u2_amd64.deb ...
+#13 29.91 Unpacking libbz2-1.0:amd64 (1.0.6-9.2~deb10u2) over (1.0.6-9.2~deb10u1) ...
+#13 29.99 Setting up libbz2-1.0:amd64 (1.0.6-9.2~deb10u2) ...
+#13 30.05 Selecting previously unselected package libgdbm-compat4:amd64.
+#13 30.05 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 8190 files and directories currently installed.)
+#13 30.05 Preparing to unpack .../libgdbm-compat4_1.18.1-4_amd64.deb ...
+#13 30.06 Unpacking libgdbm-compat4:amd64 (1.18.1-4) ...
+#13 30.08 Preparing to unpack .../zlib1g_1%3a1.2.11.dfsg-1+deb10u2_amd64.deb ...
+#13 30.09 Unpacking zlib1g:amd64 (1:1.2.11.dfsg-1+deb10u2) over (1:1.2.11.dfsg-1) ...
+#13 30.12 Setting up zlib1g:amd64 (1:1.2.11.dfsg-1+deb10u2) ...
+#13 30.15 Selecting previously unselected package libperl5.28:amd64.
+#13 30.15 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 8196 files and directories currently installed.)
+#13 30.15 Preparing to unpack .../libperl5.28_5.28.1-6+deb10u1_amd64.deb ...
+#13 30.16 Unpacking libperl5.28:amd64 (5.28.1-6+deb10u1) ...
+#13 30.47 Selecting previously unselected package perl.
+#13 30.47 Preparing to unpack .../perl_5.28.1-6+deb10u1_amd64.deb ...
+#13 30.48 Unpacking perl (5.28.1-6+deb10u1) ...
+#13 30.52 Preparing to unpack .../liblzma5_5.2.4-1+deb10u1_amd64.deb ...
+#13 30.52 Unpacking liblzma5:amd64 (5.2.4-1+deb10u1) over (5.2.4-1) ...
+#13 30.56 Setting up liblzma5:amd64 (5.2.4-1+deb10u1) ...
+#13 30.60 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 8759 files and directories currently installed.)
+#13 30.60 Preparing to unpack .../00-libssl1.1_1.1.1n-0+deb10u6_amd64.deb ...
+#13 30.61 Unpacking libssl1.1:amd64 (1.1.1n-0+deb10u6) over (1.1.1d-0+deb10u2) ...
+#13 30.74 Selecting previously unselected package bzip2.
+#13 30.74 Preparing to unpack .../01-bzip2_1.0.6-9.2~deb10u2_amd64.deb ...
+#13 30.74 Unpacking bzip2 (1.0.6-9.2~deb10u2) ...
+#13 30.76 Selecting previously unselected package libicu63:amd64.
+#13 30.76 Preparing to unpack .../02-libicu63_63.1-6+deb10u3_amd64.deb ...
+#13 30.77 Unpacking libicu63:amd64 (63.1-6+deb10u3) ...
+#13 31.35 Selecting previously unselected package libxml2:amd64.
+#13 31.35 Preparing to unpack .../03-libxml2_2.9.4+dfsg1-7+deb10u6_amd64.deb ...
+#13 31.35 Unpacking libxml2:amd64 (2.9.4+dfsg1-7+deb10u6) ...
+#13 31.41 Selecting previously unselected package libpcre2-8-0:amd64.
+#13 31.41 Preparing to unpack .../04-libpcre2-8-0_10.32-5+deb10u1_amd64.deb ...
+#13 31.42 Unpacking libpcre2-8-0:amd64 (10.32-5+deb10u1) ...
+#13 31.45 Selecting previously unselected package libpsl5:amd64.
+#13 31.45 Preparing to unpack .../05-libpsl5_0.20.2-2_amd64.deb ...
+#13 31.46 Unpacking libpsl5:amd64 (0.20.2-2) ...
+#13 31.48 Selecting previously unselected package wget.
+#13 31.48 Preparing to unpack .../06-wget_1.20.1-1.1_amd64.deb ...
+#13 31.48 Unpacking wget (1.20.1-1.1) ...
+#13 31.55 Selecting previously unselected package xz-utils.
+#13 31.55 Preparing to unpack .../07-xz-utils_5.2.4-1+deb10u1_amd64.deb ...
+#13 31.56 Unpacking xz-utils (5.2.4-1+deb10u1) ...
+#13 31.59 Selecting previously unselected package binutils-common:amd64.
+#13 31.59 Preparing to unpack .../08-binutils-common_2.31.1-16_amd64.deb ...
+#13 31.60 Unpacking binutils-common:amd64 (2.31.1-16) ...
+#13 31.77 Selecting previously unselected package libbinutils:amd64.
+#13 31.78 Preparing to unpack .../09-libbinutils_2.31.1-16_amd64.deb ...
+#13 31.78 Unpacking libbinutils:amd64 (2.31.1-16) ...
+#13 31.83 Selecting previously unselected package binutils-x86-64-linux-gnu.
+#13 31.83 Preparing to unpack .../10-binutils-x86-64-linux-gnu_2.31.1-16_amd64.deb ...
+#13 31.84 Unpacking binutils-x86-64-linux-gnu (2.31.1-16) ...
+#13 32.03 Selecting previously unselected package binutils.
+#13 32.03 Preparing to unpack .../11-binutils_2.31.1-16_amd64.deb ...
+#13 32.03 Unpacking binutils (2.31.1-16) ...
+#13 32.06 Selecting previously unselected package libisl19:amd64.
+#13 32.06 Preparing to unpack .../12-libisl19_0.20-2_amd64.deb ...
+#13 32.06 Unpacking libisl19:amd64 (0.20-2) ...
+#13 32.13 Selecting previously unselected package libmpfr6:amd64.
+#13 32.13 Preparing to unpack .../13-libmpfr6_4.0.2-1_amd64.deb ...
+#13 32.13 Unpacking libmpfr6:amd64 (4.0.2-1) ...
+#13 32.18 Selecting previously unselected package libmpc3:amd64.
+#13 32.18 Preparing to unpack .../14-libmpc3_1.1.0-1_amd64.deb ...
+#13 32.18 Unpacking libmpc3:amd64 (1.1.0-1) ...
+#13 32.21 Selecting previously unselected package cpp-8.
+#13 32.21 Preparing to unpack .../15-cpp-8_8.3.0-6_amd64.deb ...
+#13 32.21 Unpacking cpp-8 (8.3.0-6) ...
+#13 32.77 Selecting previously unselected package cpp.
+#13 32.77 Preparing to unpack .../16-cpp_4%3a8.3.0-1_amd64.deb ...
+#13 32.78 Unpacking cpp (4:8.3.0-1) ...
+#13 32.79 Selecting previously unselected package libdpkg-perl.
+#13 32.79 Preparing to unpack .../17-libdpkg-perl_1.19.8_all.deb ...
+#13 32.80 Unpacking libdpkg-perl (1.19.8) ...
+#13 32.84 Selecting previously unselected package patch.
+#13 32.84 Preparing to unpack .../18-patch_2.7.6-3+deb10u1_amd64.deb ...
+#13 32.85 Unpacking patch (2.7.6-3+deb10u1) ...
+#13 32.87 Selecting previously unselected package make.
+#13 32.87 Preparing to unpack .../19-make_4.2.1-1.2_amd64.deb ...
+#13 32.88 Unpacking make (4.2.1-1.2) ...
+#13 32.92 Selecting previously unselected package dpkg-dev.
+#13 32.92 Preparing to unpack .../20-dpkg-dev_1.19.8_all.deb ...
+#13 32.92 Unpacking dpkg-dev (1.19.8) ...
+#13 33.00 Selecting previously unselected package libcc1-0:amd64.
+#13 33.00 Preparing to unpack .../21-libcc1-0_8.3.0-6_amd64.deb ...
+#13 33.01 Unpacking libcc1-0:amd64 (8.3.0-6) ...
+#13 33.03 Selecting previously unselected package libgomp1:amd64.
+#13 33.03 Preparing to unpack .../22-libgomp1_8.3.0-6_amd64.deb ...
+#13 33.03 Unpacking libgomp1:amd64 (8.3.0-6) ...
+#13 33.06 Selecting previously unselected package libitm1:amd64.
+#13 33.06 Preparing to unpack .../23-libitm1_8.3.0-6_amd64.deb ...
+#13 33.06 Unpacking libitm1:amd64 (8.3.0-6) ...
+#13 33.09 Selecting previously unselected package libatomic1:amd64.
+#13 33.09 Preparing to unpack .../24-libatomic1_8.3.0-6_amd64.deb ...
+#13 33.09 Unpacking libatomic1:amd64 (8.3.0-6) ...
+#13 33.12 Selecting previously unselected package libasan5:amd64.
+#13 33.12 Preparing to unpack .../25-libasan5_8.3.0-6_amd64.deb ...
+#13 33.12 Unpacking libasan5:amd64 (8.3.0-6) ...
+#13 33.17 Selecting previously unselected package liblsan0:amd64.
+#13 33.17 Preparing to unpack .../26-liblsan0_8.3.0-6_amd64.deb ...
+#13 33.17 Unpacking liblsan0:amd64 (8.3.0-6) ...
+#13 33.20 Selecting previously unselected package libtsan0:amd64.
+#13 33.20 Preparing to unpack .../27-libtsan0_8.3.0-6_amd64.deb ...
+#13 33.20 Unpacking libtsan0:amd64 (8.3.0-6) ...
+#13 33.25 Selecting previously unselected package libubsan1:amd64.
+#13 33.25 Preparing to unpack .../28-libubsan1_8.3.0-6_amd64.deb ...
+#13 33.25 Unpacking libubsan1:amd64 (8.3.0-6) ...
+#13 33.29 Selecting previously unselected package libmpx2:amd64.
+#13 33.29 Preparing to unpack .../29-libmpx2_8.3.0-6_amd64.deb ...
+#13 33.29 Unpacking libmpx2:amd64 (8.3.0-6) ...
+#13 33.32 Selecting previously unselected package libquadmath0:amd64.
+#13 33.32 Preparing to unpack .../30-libquadmath0_8.3.0-6_amd64.deb ...
+#13 33.32 Unpacking libquadmath0:amd64 (8.3.0-6) ...
+#13 33.36 Selecting previously unselected package libgcc-8-dev:amd64.
+#13 33.36 Preparing to unpack .../31-libgcc-8-dev_8.3.0-6_amd64.deb ...
+#13 33.36 Unpacking libgcc-8-dev:amd64 (8.3.0-6) ...
+#13 33.52 Selecting previously unselected package gcc-8.
+#13 33.52 Preparing to unpack .../32-gcc-8_8.3.0-6_amd64.deb ...
+#13 33.52 Unpacking gcc-8 (8.3.0-6) ...
+#13 34.11 Selecting previously unselected package gcc.
+#13 34.11 Preparing to unpack .../33-gcc_4%3a8.3.0-1_amd64.deb ...
+#13 34.11 Unpacking gcc (4:8.3.0-1) ...
+#13 34.14 Selecting previously unselected package libglib2.0-0:amd64.
+#13 34.14 Preparing to unpack .../34-libglib2.0-0_2.58.3-2+deb10u6_amd64.deb ...
+#13 34.14 Unpacking libglib2.0-0:amd64 (2.58.3-2+deb10u6) ...
+#13 34.24 Selecting previously unselected package pkg-config.
+#13 34.24 Preparing to unpack .../35-pkg-config_0.29-6_amd64.deb ...
+#13 34.24 Unpacking pkg-config (0.29-6) ...
+#13 34.26 Selecting previously unselected package icu-devtools.
+#13 34.27 Preparing to unpack .../36-icu-devtools_63.1-6+deb10u3_amd64.deb ...
+#13 34.27 Unpacking icu-devtools (63.1-6+deb10u3) ...
+#13 34.30 Selecting previously unselected package libc-dev-bin.
+#13 34.30 Preparing to unpack .../37-libc-dev-bin_2.28-10+deb10u4_amd64.deb ...
+#13 34.31 Unpacking libc-dev-bin (2.28-10+deb10u4) ...
+#13 34.34 Selecting previously unselected package linux-libc-dev:amd64.
+#13 34.34 Preparing to unpack .../38-linux-libc-dev_4.19.316-1_amd64.deb ...
+#13 34.34 Unpacking linux-libc-dev:amd64 (4.19.316-1) ...
+#13 34.43 Selecting previously unselected package libc6-dev:amd64.
+#13 34.43 Preparing to unpack .../39-libc6-dev_2.28-10+deb10u4_amd64.deb ...
+#13 34.43 Unpacking libc6-dev:amd64 (2.28-10+deb10u4) ...
+#13 34.64 Selecting previously unselected package libbz2-dev:amd64.
+#13 34.64 Preparing to unpack .../40-libbz2-dev_1.0.6-9.2~deb10u2_amd64.deb ...
+#13 34.65 Unpacking libbz2-dev:amd64 (1.0.6-9.2~deb10u2) ...
+#13 34.67 Selecting previously unselected package libffi-dev:amd64.
+#13 34.67 Preparing to unpack .../41-libffi-dev_3.2.1-9_amd64.deb ...
+#13 34.67 Unpacking libffi-dev:amd64 (3.2.1-9) ...
+#13 34.70 Selecting previously unselected package libicu-dev:amd64.
+#13 34.70 Preparing to unpack .../42-libicu-dev_63.1-6+deb10u3_amd64.deb ...
+#13 34.71 Unpacking libicu-dev:amd64 (63.1-6+deb10u3) ...
+#13 35.35 Selecting previously unselected package libjbig0:amd64.
+#13 35.35 Preparing to unpack .../43-libjbig0_2.1-3.1+b2_amd64.deb ...
+#13 35.35 Unpacking libjbig0:amd64 (2.1-3.1+b2) ...
+#13 35.37 Selecting previously unselected package libjbig-dev:amd64.
+#13 35.37 Preparing to unpack .../44-libjbig-dev_2.1-3.1+b2_amd64.deb ...
+#13 35.37 Unpacking libjbig-dev:amd64 (2.1-3.1+b2) ...
+#13 35.40 Selecting previously unselected package libjpeg62-turbo:amd64.
+#13 35.40 Preparing to unpack .../45-libjpeg62-turbo_1%3a1.5.2-2+deb10u1_amd64.deb ...
+#13 35.40 Unpacking libjpeg62-turbo:amd64 (1:1.5.2-2+deb10u1) ...
+#13 35.43 Selecting previously unselected package libjpeg62-turbo-dev:amd64.
+#13 35.43 Preparing to unpack .../46-libjpeg62-turbo-dev_1%3a1.5.2-2+deb10u1_amd64.deb ...
+#13 35.44 Unpacking libjpeg62-turbo-dev:amd64 (1:1.5.2-2+deb10u1) ...
+#13 35.47 Selecting previously unselected package liblzma-dev:amd64.
+#13 35.47 Preparing to unpack .../47-liblzma-dev_5.2.4-1+deb10u1_amd64.deb ...
+#13 35.48 Unpacking liblzma-dev:amd64 (5.2.4-1+deb10u1) ...
+#13 35.52 Selecting previously unselected package libopenjp2-7:amd64.
+#13 35.52 Preparing to unpack .../48-libopenjp2-7_2.3.0-2+deb10u2_amd64.deb ...
+#13 35.52 Unpacking libopenjp2-7:amd64 (2.3.0-2+deb10u2) ...
+#13 35.55 Selecting previously unselected package libopenjp2-7-dev.
+#13 35.55 Preparing to unpack .../49-libopenjp2-7-dev_2.3.0-2+deb10u2_amd64.deb ...
+#13 35.56 Unpacking libopenjp2-7-dev (2.3.0-2+deb10u2) ...
+#13 35.58 Selecting previously unselected package libpcre16-3:amd64.
+#13 35.58 Preparing to unpack .../50-libpcre16-3_2%3a8.39-12_amd64.deb ...
+#13 35.59 Unpacking libpcre16-3:amd64 (2:8.39-12) ...
+#13 35.63 Selecting previously unselected package libpcre32-3:amd64.
+#13 35.63 Preparing to unpack .../51-libpcre32-3_2%3a8.39-12_amd64.deb ...
+#13 35.63 Unpacking libpcre32-3:amd64 (2:8.39-12) ...
+#13 35.66 Selecting previously unselected package libpcrecpp0v5:amd64.
+#13 35.66 Preparing to unpack .../52-libpcrecpp0v5_2%3a8.39-12_amd64.deb ...
+#13 35.67 Unpacking libpcrecpp0v5:amd64 (2:8.39-12) ...
+#13 35.69 Selecting previously unselected package libpcre3-dev:amd64.
+#13 35.69 Preparing to unpack .../53-libpcre3-dev_2%3a8.39-12_amd64.deb ...
+#13 35.69 Unpacking libpcre3-dev:amd64 (2:8.39-12) ...
+#13 35.76 Selecting previously unselected package libssl-dev:amd64.
+#13 35.76 Preparing to unpack .../54-libssl-dev_1.1.1n-0+deb10u6_amd64.deb ...
+#13 35.76 Unpacking libssl-dev:amd64 (1.1.1n-0+deb10u6) ...
+#13 35.88 Selecting previously unselected package libwebp6:amd64.
+#13 35.88 Preparing to unpack .../55-libwebp6_0.6.1-2+deb10u3_amd64.deb ...
+#13 35.89 Unpacking libwebp6:amd64 (0.6.1-2+deb10u3) ...
+#13 35.93 Selecting previously unselected package libtiff5:amd64.
+#13 35.93 Preparing to unpack .../56-libtiff5_4.1.0+git191117-2~deb10u9_amd64.deb ...
+#13 35.94 Unpacking libtiff5:amd64 (4.1.0+git191117-2~deb10u9) ...
+#13 35.98 Selecting previously unselected package libtiffxx5:amd64.
+#13 35.98 Preparing to unpack .../57-libtiffxx5_4.1.0+git191117-2~deb10u9_amd64.deb ...
+#13 35.98 Unpacking libtiffxx5:amd64 (4.1.0+git191117-2~deb10u9) ...
+#13 36.02 Selecting previously unselected package zlib1g-dev:amd64.
+#13 36.02 Preparing to unpack .../58-zlib1g-dev_1%3a1.2.11.dfsg-1+deb10u2_amd64.deb ...
+#13 36.02 Unpacking zlib1g-dev:amd64 (1:1.2.11.dfsg-1+deb10u2) ...
+#13 36.05 Selecting previously unselected package libtiff-dev:amd64.
+#13 36.06 Preparing to unpack .../59-libtiff-dev_4.1.0+git191117-2~deb10u9_amd64.deb ...
+#13 36.06 Unpacking libtiff-dev:amd64 (4.1.0+git191117-2~deb10u9) ...
+#13 36.10 Selecting previously unselected package libtiff5-dev.
+#13 36.10 Preparing to unpack .../60-libtiff5-dev_4.1.0+git191117-2~deb10u9_amd64.deb ...
+#13 36.11 Unpacking libtiff5-dev (4.1.0+git191117-2~deb10u9) ...
+#13 36.13 Selecting previously unselected package libxml2-dev:amd64.
+#13 36.13 Preparing to unpack .../61-libxml2-dev_2.9.4+dfsg1-7+deb10u6_amd64.deb ...
+#13 36.13 Unpacking libxml2-dev:amd64 (2.9.4+dfsg1-7+deb10u6) ...
+#13 36.21 Selecting previously unselected package libxslt1.1:amd64.
+#13 36.21 Preparing to unpack .../62-libxslt1.1_1.1.32-2.2~deb10u2_amd64.deb ...
+#13 36.22 Unpacking libxslt1.1:amd64 (1.1.32-2.2~deb10u2) ...
+#13 36.25 Selecting previously unselected package libxslt1-dev:amd64.
+#13 36.26 Preparing to unpack .../63-libxslt1-dev_1.1.32-2.2~deb10u2_amd64.deb ...
+#13 36.26 Unpacking libxslt1-dev:amd64 (1.1.32-2.2~deb10u2) ...
+#13 36.32 Setting up perl-modules-5.28 (5.28.1-6+deb10u1) ...
+#13 36.33 Setting up libpcrecpp0v5:amd64 (2:8.39-12) ...
+#13 36.34 Setting up libpsl5:amd64 (0.20.2-2) ...
+#13 36.35 Setting up libpcre16-3:amd64 (2:8.39-12) ...
+#13 36.35 Setting up libglib2.0-0:amd64 (2.58.3-2+deb10u6) ...
+#13 36.36 No schema files found: doing nothing.
+#13 36.37 Setting up libssl1.1:amd64 (1.1.1n-0+deb10u6) ...
+#13 36.41 debconf: unable to initialize frontend: Dialog
+#13 36.41 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#13 36.41 debconf: falling back to frontend: Readline
+#13 36.43 Setting up binutils-common:amd64 (2.31.1-16) ...
+#13 36.44 Setting up linux-libc-dev:amd64 (4.19.316-1) ...
+#13 36.45 Setting up libgomp1:amd64 (8.3.0-6) ...
+#13 36.46 Setting up bzip2 (1.0.6-9.2~deb10u2) ...
+#13 36.47 Setting up libffi-dev:amd64 (3.2.1-9) ...
+#13 36.47 Setting up libjbig0:amd64 (2.1-3.1+b2) ...
+#13 36.48 Setting up libicu63:amd64 (63.1-6+deb10u3) ...
+#13 36.49 Setting up libasan5:amd64 (8.3.0-6) ...
+#13 36.50 Setting up libjpeg62-turbo:amd64 (1:1.5.2-2+deb10u1) ...
+#13 36.51 Setting up make (4.2.1-1.2) ...
+#13 36.52 Setting up libmpfr6:amd64 (4.0.2-1) ...
+#13 36.53 Setting up xz-utils (5.2.4-1+deb10u1) ...
+#13 36.54 update-alternatives: using /usr/bin/xz to provide /usr/bin/lzma (lzma) in auto mode
+#13 36.54 update-alternatives: warning: skip creation of /usr/share/man/man1/lzma.1.gz because associated file /usr/share/man/man1/xz.1.gz (of link group lzma) doesn't exist
+#13 36.54 update-alternatives: warning: skip creation of /usr/share/man/man1/unlzma.1.gz because associated file /usr/share/man/man1/unxz.1.gz (of link group lzma) doesn't exist
+#13 36.54 update-alternatives: warning: skip creation of /usr/share/man/man1/lzcat.1.gz because associated file /usr/share/man/man1/xzcat.1.gz (of link group lzma) doesn't exist
+#13 36.54 update-alternatives: warning: skip creation of /usr/share/man/man1/lzmore.1.gz because associated file /usr/share/man/man1/xzmore.1.gz (of link group lzma) doesn't exist
+#13 36.54 update-alternatives: warning: skip creation of /usr/share/man/man1/lzless.1.gz because associated file /usr/share/man/man1/xzless.1.gz (of link group lzma) doesn't exist
+#13 36.54 update-alternatives: warning: skip creation of /usr/share/man/man1/lzdiff.1.gz because associated file /usr/share/man/man1/xzdiff.1.gz (of link group lzma) doesn't exist
+#13 36.54 update-alternatives: warning: skip creation of /usr/share/man/man1/lzcmp.1.gz because associated file /usr/share/man/man1/xzcmp.1.gz (of link group lzma) doesn't exist
+#13 36.54 update-alternatives: warning: skip creation of /usr/share/man/man1/lzgrep.1.gz because associated file /usr/share/man/man1/xzgrep.1.gz (of link group lzma) doesn't exist
+#13 36.54 update-alternatives: warning: skip creation of /usr/share/man/man1/lzegrep.1.gz because associated file /usr/share/man/man1/xzegrep.1.gz (of link group lzma) doesn't exist
+#13 36.54 update-alternatives: warning: skip creation of /usr/share/man/man1/lzfgrep.1.gz because associated file /usr/share/man/man1/xzfgrep.1.gz (of link group lzma) doesn't exist
+#13 36.55 Setting up libquadmath0:amd64 (8.3.0-6) ...
+#13 36.55 Setting up libssl-dev:amd64 (1.1.1n-0+deb10u6) ...
+#13 36.56 Setting up libpcre32-3:amd64 (2:8.39-12) ...
+#13 36.57 Setting up libmpc3:amd64 (1.1.0-1) ...
+#13 36.58 Setting up libatomic1:amd64 (8.3.0-6) ...
+#13 36.59 Setting up patch (2.7.6-3+deb10u1) ...
+#13 36.60 Setting up libwebp6:amd64 (0.6.1-2+deb10u3) ...
+#13 36.60 Setting up libgdbm-compat4:amd64 (1.18.1-4) ...
+#13 36.61 Setting up libpcre2-8-0:amd64 (10.32-5+deb10u1) ...
+#13 36.62 Setting up libperl5.28:amd64 (5.28.1-6+deb10u1) ...
+#13 36.63 Setting up libmpx2:amd64 (8.3.0-6) ...
+#13 36.64 Setting up liblzma-dev:amd64 (5.2.4-1+deb10u1) ...
+#13 36.65 Setting up libubsan1:amd64 (8.3.0-6) ...
+#13 36.65 Setting up libisl19:amd64 (0.20-2) ...
+#13 36.66 Setting up libopenjp2-7:amd64 (2.3.0-2+deb10u2) ...
+#13 36.67 Setting up libtiff5:amd64 (4.1.0+git191117-2~deb10u9) ...
+#13 36.68 Setting up libbinutils:amd64 (2.31.1-16) ...
+#13 36.69 Setting up cpp-8 (8.3.0-6) ...
+#13 36.70 Setting up libc-dev-bin (2.28-10+deb10u4) ...
+#13 36.71 Setting up libxml2:amd64 (2.9.4+dfsg1-7+deb10u6) ...
+#13 36.72 Setting up libcc1-0:amd64 (8.3.0-6) ...
+#13 36.72 Setting up liblsan0:amd64 (8.3.0-6) ...
+#13 36.73 Setting up libitm1:amd64 (8.3.0-6) ...
+#13 36.74 Setting up libtiffxx5:amd64 (4.1.0+git191117-2~deb10u9) ...
+#13 36.75 Setting up binutils-x86-64-linux-gnu (2.31.1-16) ...
+#13 36.76 Setting up libtsan0:amd64 (8.3.0-6) ...
+#13 36.77 Setting up wget (1.20.1-1.1) ...
+#13 36.78 Setting up libjbig-dev:amd64 (2.1-3.1+b2) ...
+#13 36.79 Setting up binutils (2.31.1-16) ...
+#13 36.80 Setting up perl (5.28.1-6+deb10u1) ...
+#13 36.81 Setting up libopenjp2-7-dev (2.3.0-2+deb10u2) ...
+#13 36.82 Setting up libdpkg-perl (1.19.8) ...
+#13 36.83 Setting up libgcc-8-dev:amd64 (8.3.0-6) ...
+#13 36.84 Setting up cpp (4:8.3.0-1) ...
+#13 36.85 Setting up libxslt1.1:amd64 (1.1.32-2.2~deb10u2) ...
+#13 36.86 Setting up libc6-dev:amd64 (2.28-10+deb10u4) ...
+#13 36.87 Setting up libbz2-dev:amd64 (1.0.6-9.2~deb10u2) ...
+#13 36.88 Setting up gcc-8 (8.3.0-6) ...
+#13 36.89 Setting up libpcre3-dev:amd64 (2:8.39-12) ...
+#13 36.90 Setting up gcc (4:8.3.0-1) ...
+#13 36.91 Setting up dpkg-dev (1.19.8) ...
+#13 36.93 Setting up libjpeg62-turbo-dev:amd64 (1:1.5.2-2+deb10u1) ...
+#13 36.93 Setting up pkg-config (0.29-6) ...
+#13 36.96 Setting up zlib1g-dev:amd64 (1:1.2.11.dfsg-1+deb10u2) ...
+#13 36.97 Setting up libtiff-dev:amd64 (4.1.0+git191117-2~deb10u9) ...
+#13 36.97 Setting up icu-devtools (63.1-6+deb10u3) ...
+#13 36.98 Setting up libicu-dev:amd64 (63.1-6+deb10u3) ...
+#13 36.99 Setting up libtiff5-dev (4.1.0+git191117-2~deb10u9) ...
+#13 37.00 Setting up libxml2-dev:amd64 (2.9.4+dfsg1-7+deb10u6) ...
+#13 37.01 Setting up libxslt1-dev:amd64 (1.1.32-2.2~deb10u2) ...
+#13 37.01 Processing triggers for libc-bin (2.28-10) ...
+#13 37.07 Reading package lists...
+#13 37.41 Building dependency tree...
+#13 37.48 Reading state information...
+#13 37.55 libjpeg62-turbo is already the newest version (1:1.5.2-2+deb10u1).
+#13 37.55 libjpeg62-turbo set to manually installed.
+#13 37.55 libopenjp2-7 is already the newest version (2.3.0-2+deb10u2).
+#13 37.55 libopenjp2-7 set to manually installed.
+#13 37.55 libxml2 is already the newest version (2.9.4+dfsg1-7+deb10u6).
+#13 37.55 libxml2 set to manually installed.
+#13 37.55 libxslt1.1 is already the newest version (1.1.32-2.2~deb10u2).
+#13 37.55 libxslt1.1 set to manually installed.
+#13 37.55 libtiff5 is already the newest version (4.1.0+git191117-2~deb10u9).
+#13 37.55 libtiff5 set to manually installed.
+#13 37.55 The following additional packages will be installed:
+#13 37.55   fontconfig fontconfig-config fonts-dejavu-core git-man libbsd0
+#13 37.55   libcurl3-gnutls libdatrie1 liberror-perl libexpat1 libfontconfig1
+#13 37.55   libfreetype6 libfribidi0 libgdk-pixbuf2.0-common libgpm2 libgraphite2-3
+#13 37.55   libgssapi-krb5-2 libharfbuzz0b libidn11 libk5crypto3 libkeyutils1 libkrb5-3
+#13 37.55   libkrb5support0 libldap-2.4-2 libldap-common libncurses6 libncursesw6
+#13 37.55   libnghttp2-14 libpangoft2-1.0-0 libpixman-1-0 libpng16-16 libpopt0
+#13 37.55   libprocps7 librtmp1 libsasl2-2 libsasl2-modules-db libssh2-1 libthai-data
+#13 37.55   libthai0 libtinfo6 libx11-6 libx11-data libxau6 libxcb-render0 libxcb-shm0
+#13 37.55   libxcb1 libxdmcp6 libxext6 libxrender1 lsb-base lynx-common sensible-utils
+#13 37.55   shared-mime-info ucf vim-common vim-runtime xxd
+#13 37.55 Suggested packages:
+#13 37.55   gettext-base git-daemon-run | git-daemon-sysvinit git-doc git-el git-email
+#13 37.55   git-gui gitk gitweb git-cvs git-mediawiki git-svn gpm krb5-doc krb5-user
+#13 37.55   openssh-client openssh-server ctags vim-doc vim-scripts
+#13 37.55 Recommended packages:
+#13 37.55   less ssh-client libgdk-pixbuf2.0-bin krb5-locales libsasl2-modules
+#13 37.55   mime-support psmisc
+#13 37.73 The following NEW packages will be installed:
+#13 37.73   fontconfig fontconfig-config fonts-dejavu-core git git-man gosu libbsd0
+#13 37.73   libcairo2 libcurl3-gnutls libdatrie1 liberror-perl libexpat1 libfontconfig1
+#13 37.73   libfreetype6 libfribidi0 libgdk-pixbuf2.0-0 libgdk-pixbuf2.0-common libgpm2
+#13 37.73   libgraphite2-3 libgssapi-krb5-2 libharfbuzz0b libidn11 libk5crypto3
+#13 37.73   libkeyutils1 libkrb5-3 libkrb5support0 libldap-2.4-2 libldap-common
+#13 37.73   libncurses6 libnghttp2-14 libpango-1.0-0 libpangocairo-1.0-0
+#13 37.73   libpangoft2-1.0-0 libpixman-1-0 libpng16-16 libpopt0 libprocps7 librtmp1
+#13 37.73   libsasl2-2 libsasl2-modules-db libssh2-1 libthai-data libthai0 libx11-6
+#13 37.73   libx11-data libxau6 libxcb-render0 libxcb-shm0 libxcb1 libxdmcp6 libxext6
+#13 37.73   libxrender1 lsb-base lynx lynx-common procps rsync sensible-utils
+#13 37.73   shared-mime-info ucf vim vim-common vim-runtime xxd
+#13 37.73 The following packages will be upgraded:
+#13 37.73   libncursesw6 libtinfo6
+#13 37.98 2 upgraded, 64 newly installed, 0 to remove and 36 not upgraded.
+#13 37.98 Need to get 29.1 MB of archives.
+#13 37.98 After this operation, 112 MB of additional disk space will be used.
+#13 37.98 Get:1 http://security.debian.org/debian-security buster/updates/main amd64 libtinfo6 amd64 6.1+20181013-2+deb10u5 [326 kB]
+#13 38.01 Get:2 http://deb.debian.org/debian buster/main amd64 libprocps7 amd64 2:3.3.15-2 [61.7 kB]
+#13 38.26 Get:3 http://deb.debian.org/debian buster/main amd64 lsb-base all 10.2019051400 [28.4 kB]
+#13 38.28 Get:4 http://security.debian.org/debian-security buster/updates/main amd64 libncursesw6 amd64 6.1+20181013-2+deb10u5 [131 kB]
+#13 38.34 Get:5 http://security.debian.org/debian-security buster/updates/main amd64 libncurses6 amd64 6.1+20181013-2+deb10u5 [102 kB]
+#13 38.36 Get:6 http://deb.debian.org/debian buster/main amd64 procps amd64 2:3.3.15-2 [259 kB]
+#13 38.38 Get:7 http://security.debian.org/debian-security buster/updates/main amd64 xxd amd64 2:8.1.0875-5+deb10u6 [141 kB]
+#13 38.47 Get:8 http://deb.debian.org/debian buster/main amd64 sensible-utils all 0.0.12 [15.8 kB]
+#13 38.47 Get:9 http://deb.debian.org/debian buster/main amd64 libkeyutils1 amd64 1.6-6 [15.0 kB]
+#13 38.47 Get:10 http://security.debian.org/debian-security buster/updates/main amd64 vim-common all 2:8.1.0875-5+deb10u6 [196 kB]
+#13 38.52 Get:11 http://security.debian.org/debian-security buster/updates/main amd64 libkrb5support0 amd64 1.17-3+deb10u6 [66.1 kB]
+#13 38.56 Get:12 http://deb.debian.org/debian buster/main amd64 ucf all 3.0038+nmu1 [69.0 kB]
+#13 38.57 Get:13 http://security.debian.org/debian-security buster/updates/main amd64 libk5crypto3 amd64 1.17-3+deb10u6 [122 kB]
+#13 38.66 Get:14 http://deb.debian.org/debian buster/main amd64 libpng16-16 amd64 1.6.36-6 [292 kB]
+#13 38.67 Get:15 http://security.debian.org/debian-security buster/updates/main amd64 libkrb5-3 amd64 1.17-3+deb10u6 [369 kB]
+#13 38.76 Get:16 http://security.debian.org/debian-security buster/updates/main amd64 libgssapi-krb5-2 amd64 1.17-3+deb10u6 [159 kB]
+#13 38.80 Get:17 http://security.debian.org/debian-security buster/updates/main amd64 libexpat1 amd64 2.2.6-2+deb10u7 [108 kB]
+#13 38.81 Get:18 http://deb.debian.org/debian buster/main amd64 libfreetype6 amd64 2.9.1-3+deb10u3 [380 kB]
+#13 38.82 Get:19 http://security.debian.org/debian-security buster/updates/main amd64 libnghttp2-14 amd64 1.36.0-2+deb10u3 [86.1 kB]
+#13 38.87 Get:20 http://security.debian.org/debian-security buster/updates/main amd64 libssh2-1 amd64 1.8.0-2.1+deb10u1 [141 kB]
+#13 38.98 Get:21 http://security.debian.org/debian-security buster/updates/main amd64 libcurl3-gnutls amd64 7.64.0-4+deb10u9 [333 kB]
+#13 39.01 Get:22 http://deb.debian.org/debian buster/main amd64 fonts-dejavu-core all 2.37-1 [1068 kB]
+#13 39.25 Get:23 http://deb.debian.org/debian buster/main amd64 fontconfig-config all 2.13.1-2 [280 kB]
+#13 39.30 Get:24 http://deb.debian.org/debian buster/main amd64 libfontconfig1 amd64 2.13.1-2 [346 kB]
+#13 39.39 Get:25 http://security.debian.org/debian-security buster/updates/main amd64 git-man all 1:2.20.1-2+deb10u9 [1624 kB]
+#13 39.41 Get:26 http://deb.debian.org/debian buster/main amd64 fontconfig amd64 2.13.1-2 [405 kB]
+#13 39.43 Get:27 http://deb.debian.org/debian buster/main amd64 libsasl2-modules-db amd64 2.1.27+dfsg-1+deb10u2 [69.2 kB]
+#13 39.43 Get:28 http://deb.debian.org/debian buster/main amd64 libsasl2-2 amd64 2.1.27+dfsg-1+deb10u2 [106 kB]
+#13 39.47 Get:29 http://deb.debian.org/debian buster/main amd64 libldap-common all 2.4.47+dfsg-3+deb10u7 [90.1 kB]
+#13 39.51 Get:30 http://deb.debian.org/debian buster/main amd64 libldap-2.4-2 amd64 2.4.47+dfsg-3+deb10u7 [224 kB]
+#13 39.56 Get:31 http://deb.debian.org/debian buster/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2 [60.5 kB]
+#13 39.61 Get:32 http://deb.debian.org/debian buster/main amd64 liberror-perl all 0.17027-2 [30.9 kB]
+#13 39.71 Get:33 http://deb.debian.org/debian buster/main amd64 gosu amd64 1.10-1+b23 [523 kB]
+#13 39.77 Get:34 http://deb.debian.org/debian buster/main amd64 libbsd0 amd64 0.9.1-2+deb10u1 [99.5 kB]
+#13 39.81 Get:35 http://deb.debian.org/debian buster/main amd64 libxau6 amd64 1:1.0.8-1+b2 [19.9 kB]
+#13 39.86 Get:36 http://deb.debian.org/debian buster/main amd64 libxdmcp6 amd64 1:1.1.2-3 [26.3 kB]
+#13 39.96 Get:37 http://deb.debian.org/debian buster/main amd64 libxcb1 amd64 1.13.1-2 [137 kB]
+#13 40.01 Get:38 http://deb.debian.org/debian buster/main amd64 libxcb-render0 amd64 1.13.1-2 [109 kB]
+#13 40.07 Get:39 http://deb.debian.org/debian buster/main amd64 libxcb-shm0 amd64 1.13.1-2 [99.2 kB]
+#13 40.11 Get:40 http://deb.debian.org/debian buster/main amd64 libxext6 amd64 2:1.3.3-1+b2 [52.5 kB]
+#13 40.21 Get:41 http://deb.debian.org/debian buster/main amd64 libxrender1 amd64 1:0.9.10-1 [33.0 kB]
+#13 40.37 Get:42 http://deb.debian.org/debian buster/main amd64 libcairo2 amd64 1.16.0-4+deb10u1 [688 kB]
+#13 40.44 Get:43 http://deb.debian.org/debian buster/main amd64 libdatrie1 amd64 0.2.12-2 [39.3 kB]
+#13 40.46 Get:44 http://deb.debian.org/debian buster/main amd64 libfribidi0 amd64 1.0.5-3.1+deb10u2 [63.9 kB]
+#13 40.71 Get:45 http://deb.debian.org/debian buster/main amd64 shared-mime-info amd64 1.10-1 [766 kB]
+#13 40.77 Get:46 http://security.debian.org/debian-security buster/updates/main amd64 git amd64 1:2.20.1-2+deb10u9 [5667 kB]
+#13 40.86 Get:47 http://deb.debian.org/debian buster/main amd64 libgdk-pixbuf2.0-common all 2.38.1+dfsg-1 [316 kB]
+#13 40.91 Get:48 http://deb.debian.org/debian buster/main amd64 libgdk-pixbuf2.0-0 amd64 2.38.1+dfsg-1 [177 kB]
+#13 40.96 Get:49 http://deb.debian.org/debian buster/main amd64 libgpm2 amd64 1.20.7-5 [35.1 kB]
+#13 41.02 Get:50 http://deb.debian.org/debian buster/main amd64 libgraphite2-3 amd64 1.3.13-7 [80.7 kB]
+#13 41.21 Get:51 http://deb.debian.org/debian buster/main amd64 libharfbuzz0b amd64 2.3.1-1 [1187 kB]
+#13 41.35 Get:52 http://deb.debian.org/debian buster/main amd64 libidn11 amd64 1.33-2.2 [116 kB]
+#13 41.36 Get:53 http://deb.debian.org/debian buster/main amd64 libthai-data all 0.1.28-2 [170 kB]
+#13 41.39 Get:54 http://deb.debian.org/debian buster/main amd64 libthai0 amd64 0.1.28-2 [54.1 kB]
+#13 41.41 Get:55 http://deb.debian.org/debian buster/main amd64 libpango-1.0-0 amd64 1.42.4-8~deb10u1 [186 kB]
+#13 41.46 Get:56 http://deb.debian.org/debian buster/main amd64 libpangoft2-1.0-0 amd64 1.42.4-8~deb10u1 [68.3 kB]
+#13 41.51 Get:57 http://deb.debian.org/debian buster/main amd64 libpangocairo-1.0-0 amd64 1.42.4-8~deb10u1 [55.7 kB]
+#13 41.56 Get:58 http://deb.debian.org/debian buster/main amd64 libpopt0 amd64 1.16-12 [49.4 kB]
+#13 42.09 Get:59 http://security.debian.org/debian-security buster/updates/main amd64 libpixman-1-0 amd64 0.36.0-1+deb10u1 [234 kB]
+#13 42.11 Get:60 http://security.debian.org/debian-security buster/updates/main amd64 libx11-data all 2:1.6.7-1+deb10u4 [299 kB]
+#13 42.16 Get:61 http://security.debian.org/debian-security buster/updates/main amd64 libx11-6 amd64 2:1.6.7-1+deb10u4 [758 kB]
+#13 42.66 Get:62 http://deb.debian.org/debian buster/main amd64 lynx-common all 2.8.9rel.1-3+deb10u1 [1212 kB]
+#13 43.35 Get:63 http://deb.debian.org/debian buster/main amd64 lynx amd64 2.8.9rel.1-3+deb10u1 [642 kB]
+#13 43.47 Get:64 http://deb.debian.org/debian buster/main amd64 rsync amd64 3.1.3-6 [397 kB]
+#13 43.52 Get:65 http://security.debian.org/debian-security buster/updates/main amd64 vim-runtime all 2:8.1.0875-5+deb10u6 [5777 kB]
+#13 44.74 Get:66 http://security.debian.org/debian-security buster/updates/main amd64 vim amd64 2:8.1.0875-5+deb10u6 [1283 kB]
+#13 44.97 debconf: delaying package configuration, since apt-utils is not installed
+#13 44.98 Fetched 29.1 MB in 7s (4064 kB/s)
+#13 45.00 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 12546 files and directories currently installed.)
+#13 45.00 Preparing to unpack .../libtinfo6_6.1+20181013-2+deb10u5_amd64.deb ...
+#13 45.01 Unpacking libtinfo6:amd64 (6.1+20181013-2+deb10u5) over (6.1+20181013-2+deb10u2) ...
+#13 45.05 Setting up libtinfo6:amd64 (6.1+20181013-2+deb10u5) ...
+#13 45.07 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 12546 files and directories currently installed.)
+#13 45.08 Preparing to unpack .../libncursesw6_6.1+20181013-2+deb10u5_amd64.deb ...
+#13 45.09 Unpacking libncursesw6:amd64 (6.1+20181013-2+deb10u5) over (6.1+20181013-2+deb10u2) ...
+#13 45.13 Setting up libncursesw6:amd64 (6.1+20181013-2+deb10u5) ...
+#13 45.16 Selecting previously unselected package libncurses6:amd64.
+#13 45.16 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 12546 files and directories currently installed.)
+#13 45.17 Preparing to unpack .../00-libncurses6_6.1+20181013-2+deb10u5_amd64.deb ...
+#13 45.17 Unpacking libncurses6:amd64 (6.1+20181013-2+deb10u5) ...
+#13 45.20 Selecting previously unselected package libprocps7:amd64.
+#13 45.20 Preparing to unpack .../01-libprocps7_2%3a3.3.15-2_amd64.deb ...
+#13 45.20 Unpacking libprocps7:amd64 (2:3.3.15-2) ...
+#13 45.22 Selecting previously unselected package lsb-base.
+#13 45.22 Preparing to unpack .../02-lsb-base_10.2019051400_all.deb ...
+#13 45.22 Unpacking lsb-base (10.2019051400) ...
+#13 45.25 Selecting previously unselected package procps.
+#13 45.25 Preparing to unpack .../03-procps_2%3a3.3.15-2_amd64.deb ...
+#13 45.26 Unpacking procps (2:3.3.15-2) ...
+#13 45.29 Selecting previously unselected package sensible-utils.
+#13 45.30 Preparing to unpack .../04-sensible-utils_0.0.12_all.deb ...
+#13 45.30 Unpacking sensible-utils (0.0.12) ...
+#13 45.32 Selecting previously unselected package xxd.
+#13 45.32 Preparing to unpack .../05-xxd_2%3a8.1.0875-5+deb10u6_amd64.deb ...
+#13 45.32 Unpacking xxd (2:8.1.0875-5+deb10u6) ...
+#13 45.36 Selecting previously unselected package vim-common.
+#13 45.36 Preparing to unpack .../06-vim-common_2%3a8.1.0875-5+deb10u6_all.deb ...
+#13 45.36 Unpacking vim-common (2:8.1.0875-5+deb10u6) ...
+#13 45.40 Selecting previously unselected package libkeyutils1:amd64.
+#13 45.40 Preparing to unpack .../07-libkeyutils1_1.6-6_amd64.deb ...
+#13 45.41 Unpacking libkeyutils1:amd64 (1.6-6) ...
+#13 45.43 Selecting previously unselected package libkrb5support0:amd64.
+#13 45.44 Preparing to unpack .../08-libkrb5support0_1.17-3+deb10u6_amd64.deb ...
+#13 45.44 Unpacking libkrb5support0:amd64 (1.17-3+deb10u6) ...
+#13 45.46 Selecting previously unselected package libk5crypto3:amd64.
+#13 45.47 Preparing to unpack .../09-libk5crypto3_1.17-3+deb10u6_amd64.deb ...
+#13 45.47 Unpacking libk5crypto3:amd64 (1.17-3+deb10u6) ...
+#13 45.50 Selecting previously unselected package libkrb5-3:amd64.
+#13 45.50 Preparing to unpack .../10-libkrb5-3_1.17-3+deb10u6_amd64.deb ...
+#13 45.50 Unpacking libkrb5-3:amd64 (1.17-3+deb10u6) ...
+#13 45.56 Selecting previously unselected package libgssapi-krb5-2:amd64.
+#13 45.56 Preparing to unpack .../11-libgssapi-krb5-2_1.17-3+deb10u6_amd64.deb ...
+#13 45.56 Unpacking libgssapi-krb5-2:amd64 (1.17-3+deb10u6) ...
+#13 45.60 Selecting previously unselected package ucf.
+#13 45.60 Preparing to unpack .../12-ucf_3.0038+nmu1_all.deb ...
+#13 45.60 Moving old data out of the way
+#13 45.60 Unpacking ucf (3.0038+nmu1) ...
+#13 45.63 Selecting previously unselected package libexpat1:amd64.
+#13 45.63 Preparing to unpack .../13-libexpat1_2.2.6-2+deb10u7_amd64.deb ...
+#13 45.63 Unpacking libexpat1:amd64 (2.2.6-2+deb10u7) ...
+#13 45.66 Selecting previously unselected package libpng16-16:amd64.
+#13 45.66 Preparing to unpack .../14-libpng16-16_1.6.36-6_amd64.deb ...
+#13 45.67 Unpacking libpng16-16:amd64 (1.6.36-6) ...
+#13 45.71 Selecting previously unselected package libfreetype6:amd64.
+#13 45.71 Preparing to unpack .../15-libfreetype6_2.9.1-3+deb10u3_amd64.deb ...
+#13 45.71 Unpacking libfreetype6:amd64 (2.9.1-3+deb10u3) ...
+#13 45.76 Selecting previously unselected package fonts-dejavu-core.
+#13 45.76 Preparing to unpack .../16-fonts-dejavu-core_2.37-1_all.deb ...
+#13 45.76 Unpacking fonts-dejavu-core (2.37-1) ...
+#13 45.86 Selecting previously unselected package fontconfig-config.
+#13 45.86 Preparing to unpack .../17-fontconfig-config_2.13.1-2_all.deb ...
+#13 45.93 Unpacking fontconfig-config (2.13.1-2) ...
+#13 45.96 Selecting previously unselected package libfontconfig1:amd64.
+#13 45.97 Preparing to unpack .../18-libfontconfig1_2.13.1-2_amd64.deb ...
+#13 45.97 Unpacking libfontconfig1:amd64 (2.13.1-2) ...
+#13 46.01 Selecting previously unselected package fontconfig.
+#13 46.01 Preparing to unpack .../19-fontconfig_2.13.1-2_amd64.deb ...
+#13 46.01 Unpacking fontconfig (2.13.1-2) ...
+#13 46.05 Selecting previously unselected package libsasl2-modules-db:amd64.
+#13 46.05 Preparing to unpack .../20-libsasl2-modules-db_2.1.27+dfsg-1+deb10u2_amd64.deb ...
+#13 46.05 Unpacking libsasl2-modules-db:amd64 (2.1.27+dfsg-1+deb10u2) ...
+#13 46.07 Selecting previously unselected package libsasl2-2:amd64.
+#13 46.07 Preparing to unpack .../21-libsasl2-2_2.1.27+dfsg-1+deb10u2_amd64.deb ...
+#13 46.08 Unpacking libsasl2-2:amd64 (2.1.27+dfsg-1+deb10u2) ...
+#13 46.12 Selecting previously unselected package libldap-common.
+#13 46.12 Preparing to unpack .../22-libldap-common_2.4.47+dfsg-3+deb10u7_all.deb ...
+#13 46.12 Unpacking libldap-common (2.4.47+dfsg-3+deb10u7) ...
+#13 46.15 Selecting previously unselected package libldap-2.4-2:amd64.
+#13 46.15 Preparing to unpack .../23-libldap-2.4-2_2.4.47+dfsg-3+deb10u7_amd64.deb ...
+#13 46.16 Unpacking libldap-2.4-2:amd64 (2.4.47+dfsg-3+deb10u7) ...
+#13 46.20 Selecting previously unselected package libnghttp2-14:amd64.
+#13 46.20 Preparing to unpack .../24-libnghttp2-14_1.36.0-2+deb10u3_amd64.deb ...
+#13 46.20 Unpacking libnghttp2-14:amd64 (1.36.0-2+deb10u3) ...
+#13 46.23 Selecting previously unselected package librtmp1:amd64.
+#13 46.23 Preparing to unpack .../25-librtmp1_2.4+20151223.gitfa8646d.1-2_amd64.deb ...
+#13 46.23 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2) ...
+#13 46.26 Selecting previously unselected package libssh2-1:amd64.
+#13 46.26 Preparing to unpack .../26-libssh2-1_1.8.0-2.1+deb10u1_amd64.deb ...
+#13 46.27 Unpacking libssh2-1:amd64 (1.8.0-2.1+deb10u1) ...
+#13 46.31 Selecting previously unselected package libcurl3-gnutls:amd64.
+#13 46.31 Preparing to unpack .../27-libcurl3-gnutls_7.64.0-4+deb10u9_amd64.deb ...
+#13 46.32 Unpacking libcurl3-gnutls:amd64 (7.64.0-4+deb10u9) ...
+#13 46.36 Selecting previously unselected package liberror-perl.
+#13 46.36 Preparing to unpack .../28-liberror-perl_0.17027-2_all.deb ...
+#13 46.37 Unpacking liberror-perl (0.17027-2) ...
+#13 46.39 Selecting previously unselected package git-man.
+#13 46.39 Preparing to unpack .../29-git-man_1%3a2.20.1-2+deb10u9_all.deb ...
+#13 46.39 Unpacking git-man (1:2.20.1-2+deb10u9) ...
+#13 46.48 Selecting previously unselected package git.
+#13 46.48 Preparing to unpack .../30-git_1%3a2.20.1-2+deb10u9_amd64.deb ...
+#13 46.49 Unpacking git (1:2.20.1-2+deb10u9) ...
+#13 46.88 Selecting previously unselected package gosu.
+#13 46.88 Preparing to unpack .../31-gosu_1.10-1+b23_amd64.deb ...
+#13 46.89 Unpacking gosu (1.10-1+b23) ...
+#13 46.95 Selecting previously unselected package libbsd0:amd64.
+#13 46.95 Preparing to unpack .../32-libbsd0_0.9.1-2+deb10u1_amd64.deb ...
+#13 46.95 Unpacking libbsd0:amd64 (0.9.1-2+deb10u1) ...
+#13 46.98 Selecting previously unselected package libpixman-1-0:amd64.
+#13 46.98 Preparing to unpack .../33-libpixman-1-0_0.36.0-1+deb10u1_amd64.deb ...
+#13 46.99 Unpacking libpixman-1-0:amd64 (0.36.0-1+deb10u1) ...
+#13 47.03 Selecting previously unselected package libxau6:amd64.
+#13 47.03 Preparing to unpack .../34-libxau6_1%3a1.0.8-1+b2_amd64.deb ...
+#13 47.03 Unpacking libxau6:amd64 (1:1.0.8-1+b2) ...
+#13 47.05 Selecting previously unselected package libxdmcp6:amd64.
+#13 47.05 Preparing to unpack .../35-libxdmcp6_1%3a1.1.2-3_amd64.deb ...
+#13 47.06 Unpacking libxdmcp6:amd64 (1:1.1.2-3) ...
+#13 47.08 Selecting previously unselected package libxcb1:amd64.
+#13 47.08 Preparing to unpack .../36-libxcb1_1.13.1-2_amd64.deb ...
+#13 47.09 Unpacking libxcb1:amd64 (1.13.1-2) ...
+#13 47.12 Selecting previously unselected package libx11-data.
+#13 47.12 Preparing to unpack .../37-libx11-data_2%3a1.6.7-1+deb10u4_all.deb ...
+#13 47.12 Unpacking libx11-data (2:1.6.7-1+deb10u4) ...
+#13 47.17 Selecting previously unselected package libx11-6:amd64.
+#13 47.17 Preparing to unpack .../38-libx11-6_2%3a1.6.7-1+deb10u4_amd64.deb ...
+#13 47.17 Unpacking libx11-6:amd64 (2:1.6.7-1+deb10u4) ...
+#13 47.24 Selecting previously unselected package libxcb-render0:amd64.
+#13 47.24 Preparing to unpack .../39-libxcb-render0_1.13.1-2_amd64.deb ...
+#13 47.24 Unpacking libxcb-render0:amd64 (1.13.1-2) ...
+#13 47.27 Selecting previously unselected package libxcb-shm0:amd64.
+#13 47.27 Preparing to unpack .../40-libxcb-shm0_1.13.1-2_amd64.deb ...
+#13 47.27 Unpacking libxcb-shm0:amd64 (1.13.1-2) ...
+#13 47.31 Selecting previously unselected package libxext6:amd64.
+#13 47.31 Preparing to unpack .../41-libxext6_2%3a1.3.3-1+b2_amd64.deb ...
+#13 47.32 Unpacking libxext6:amd64 (2:1.3.3-1+b2) ...
+#13 47.34 Selecting previously unselected package libxrender1:amd64.
+#13 47.35 Preparing to unpack .../42-libxrender1_1%3a0.9.10-1_amd64.deb ...
+#13 47.35 Unpacking libxrender1:amd64 (1:0.9.10-1) ...
+#13 47.38 Selecting previously unselected package libcairo2:amd64.
+#13 47.38 Preparing to unpack .../43-libcairo2_1.16.0-4+deb10u1_amd64.deb ...
+#13 47.38 Unpacking libcairo2:amd64 (1.16.0-4+deb10u1) ...
+#13 47.44 Selecting previously unselected package libdatrie1:amd64.
+#13 47.44 Preparing to unpack .../44-libdatrie1_0.2.12-2_amd64.deb ...
+#13 47.45 Unpacking libdatrie1:amd64 (0.2.12-2) ...
+#13 47.48 Selecting previously unselected package libfribidi0:amd64.
+#13 47.48 Preparing to unpack .../45-libfribidi0_1.0.5-3.1+deb10u2_amd64.deb ...
+#13 47.48 Unpacking libfribidi0:amd64 (1.0.5-3.1+deb10u2) ...
+#13 47.51 Selecting previously unselected package shared-mime-info.
+#13 47.51 Preparing to unpack .../46-shared-mime-info_1.10-1_amd64.deb ...
+#13 47.51 Unpacking shared-mime-info (1.10-1) ...
+#13 47.59 Selecting previously unselected package libgdk-pixbuf2.0-common.
+#13 47.59 Preparing to unpack .../47-libgdk-pixbuf2.0-common_2.38.1+dfsg-1_all.deb ...
+#13 47.59 Unpacking libgdk-pixbuf2.0-common (2.38.1+dfsg-1) ...
+#13 47.65 Selecting previously unselected package libgdk-pixbuf2.0-0:amd64.
+#13 47.65 Preparing to unpack .../48-libgdk-pixbuf2.0-0_2.38.1+dfsg-1_amd64.deb ...
+#13 47.65 Unpacking libgdk-pixbuf2.0-0:amd64 (2.38.1+dfsg-1) ...
+#13 47.69 Selecting previously unselected package libgpm2:amd64.
+#13 47.70 Preparing to unpack .../49-libgpm2_1.20.7-5_amd64.deb ...
+#13 47.70 Unpacking libgpm2:amd64 (1.20.7-5) ...
+#13 47.72 Selecting previously unselected package libgraphite2-3:amd64.
+#13 47.72 Preparing to unpack .../50-libgraphite2-3_1.3.13-7_amd64.deb ...
+#13 47.73 Unpacking libgraphite2-3:amd64 (1.3.13-7) ...
+#13 47.76 Selecting previously unselected package libharfbuzz0b:amd64.
+#13 47.76 Preparing to unpack .../51-libharfbuzz0b_2.3.1-1_amd64.deb ...
+#13 47.76 Unpacking libharfbuzz0b:amd64 (2.3.1-1) ...
+#13 47.82 Selecting previously unselected package libidn11:amd64.
+#13 47.82 Preparing to unpack .../52-libidn11_1.33-2.2_amd64.deb ...
+#13 47.82 Unpacking libidn11:amd64 (1.33-2.2) ...
+#13 47.85 Selecting previously unselected package libthai-data.
+#13 47.85 Preparing to unpack .../53-libthai-data_0.1.28-2_all.deb ...
+#13 47.86 Unpacking libthai-data (0.1.28-2) ...
+#13 47.89 Selecting previously unselected package libthai0:amd64.
+#13 47.89 Preparing to unpack .../54-libthai0_0.1.28-2_amd64.deb ...
+#13 47.90 Unpacking libthai0:amd64 (0.1.28-2) ...
+#13 47.93 Selecting previously unselected package libpango-1.0-0:amd64.
+#13 47.93 Preparing to unpack .../55-libpango-1.0-0_1.42.4-8~deb10u1_amd64.deb ...
+#13 47.93 Unpacking libpango-1.0-0:amd64 (1.42.4-8~deb10u1) ...
+#13 47.97 Selecting previously unselected package libpangoft2-1.0-0:amd64.
+#13 47.97 Preparing to unpack .../56-libpangoft2-1.0-0_1.42.4-8~deb10u1_amd64.deb ...
+#13 47.97 Unpacking libpangoft2-1.0-0:amd64 (1.42.4-8~deb10u1) ...
+#13 48.00 Selecting previously unselected package libpangocairo-1.0-0:amd64.
+#13 48.00 Preparing to unpack .../57-libpangocairo-1.0-0_1.42.4-8~deb10u1_amd64.deb ...
+#13 48.01 Unpacking libpangocairo-1.0-0:amd64 (1.42.4-8~deb10u1) ...
+#13 48.04 Selecting previously unselected package libpopt0:amd64.
+#13 48.04 Preparing to unpack .../58-libpopt0_1.16-12_amd64.deb ...
+#13 48.04 Unpacking libpopt0:amd64 (1.16-12) ...
+#13 48.07 Selecting previously unselected package lynx-common.
+#13 48.07 Preparing to unpack .../59-lynx-common_2.8.9rel.1-3+deb10u1_all.deb ...
+#13 48.07 Unpacking lynx-common (2.8.9rel.1-3+deb10u1) ...
+#13 48.18 Selecting previously unselected package lynx.
+#13 48.18 Preparing to unpack .../60-lynx_2.8.9rel.1-3+deb10u1_amd64.deb ...
+#13 48.18 Unpacking lynx (2.8.9rel.1-3+deb10u1) ...
+#13 48.25 Selecting previously unselected package rsync.
+#13 48.25 Preparing to unpack .../61-rsync_3.1.3-6_amd64.deb ...
+#13 48.26 Unpacking rsync (3.1.3-6) ...
+#13 48.31 Selecting previously unselected package vim-runtime.
+#13 48.31 Preparing to unpack .../62-vim-runtime_2%3a8.1.0875-5+deb10u6_all.deb ...
+#13 48.32 Adding 'diversion of /usr/share/vim/vim81/doc/help.txt to /usr/share/vim/vim81/doc/help.txt.vim-tiny by vim-runtime'
+#13 48.32 Adding 'diversion of /usr/share/vim/vim81/doc/tags to /usr/share/vim/vim81/doc/tags.vim-tiny by vim-runtime'
+#13 48.33 Unpacking vim-runtime (2:8.1.0875-5+deb10u6) ...
+#13 48.74 Selecting previously unselected package vim.
+#13 48.74 Preparing to unpack .../63-vim_2%3a8.1.0875-5+deb10u6_amd64.deb ...
+#13 48.75 Unpacking vim (2:8.1.0875-5+deb10u6) ...
+#13 48.85 Setting up libexpat1:amd64 (2.2.6-2+deb10u7) ...
+#13 48.87 Setting up libgraphite2-3:amd64 (1.3.13-7) ...
+#13 48.87 Setting up libpixman-1-0:amd64 (0.36.0-1+deb10u1) ...
+#13 48.88 Setting up lsb-base (10.2019051400) ...
+#13 48.89 Setting up libxau6:amd64 (1:1.0.8-1+b2) ...
+#13 48.90 Setting up libkeyutils1:amd64 (1.6-6) ...
+#13 48.91 Setting up libgpm2:amd64 (1.20.7-5) ...
+#13 48.92 Setting up libdatrie1:amd64 (0.2.12-2) ...
+#13 48.92 Setting up libprocps7:amd64 (2:3.3.15-2) ...
+#13 48.93 Setting up libgdk-pixbuf2.0-common (2.38.1+dfsg-1) ...
+#13 48.94 Setting up libnghttp2-14:amd64 (1.36.0-2+deb10u3) ...
+#13 48.95 Setting up libldap-common (2.4.47+dfsg-3+deb10u7) ...
+#13 48.97 Setting up xxd (2:8.1.0875-5+deb10u6) ...
+#13 48.98 Setting up libkrb5support0:amd64 (1.17-3+deb10u6) ...
+#13 48.99 Setting up libsasl2-modules-db:amd64 (2.1.27+dfsg-1+deb10u2) ...
+#13 49.00 Setting up liberror-perl (0.17027-2) ...
+#13 49.01 Setting up vim-common (2:8.1.0875-5+deb10u6) ...
+#13 49.03 Setting up libx11-data (2:1.6.7-1+deb10u4) ...
+#13 49.04 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2) ...
+#13 49.05 Setting up libidn11:amd64 (1.33-2.2) ...
+#13 49.06 Setting up gosu (1.10-1+b23) ...
+#13 49.07 Setting up libncurses6:amd64 (6.1+20181013-2+deb10u5) ...
+#13 49.08 Setting up libfribidi0:amd64 (1.0.5-3.1+deb10u2) ...
+#13 49.09 Setting up shared-mime-info (1.10-1) ...
+#13 50.51 Setting up libpng16-16:amd64 (1.6.36-6) ...
+#13 50.52 Setting up fonts-dejavu-core (2.37-1) ...
+#13 50.57 Setting up libk5crypto3:amd64 (1.17-3+deb10u6) ...
+#13 50.59 Setting up lynx-common (2.8.9rel.1-3+deb10u1) ...
+#13 50.60 Setting up libsasl2-2:amd64 (2.1.27+dfsg-1+deb10u2) ...
+#13 50.61 Setting up sensible-utils (0.0.12) ...
+#13 50.62 Setting up procps (2:3.3.15-2) ...
+#13 50.64 update-alternatives: using /usr/bin/w.procps to provide /usr/bin/w (w) in auto mode
+#13 50.64 update-alternatives: warning: skip creation of /usr/share/man/man1/w.1.gz because associated file /usr/share/man/man1/w.procps.1.gz (of link group w) doesn't exist
+#13 50.65 Setting up git-man (1:2.20.1-2+deb10u9) ...
+#13 50.66 Setting up libthai-data (0.1.28-2) ...
+#13 50.67 Setting up libssh2-1:amd64 (1.8.0-2.1+deb10u1) ...
+#13 50.67 Setting up libkrb5-3:amd64 (1.17-3+deb10u6) ...
+#13 50.68 Setting up vim-runtime (2:8.1.0875-5+deb10u6) ...
+#13 50.73 Setting up libbsd0:amd64 (0.9.1-2+deb10u1) ...
+#13 50.75 Setting up libpopt0:amd64 (1.16-12) ...
+#13 50.75 Setting up libxdmcp6:amd64 (1:1.1.2-3) ...
+#13 50.76 Setting up libxcb1:amd64 (1.13.1-2) ...
+#13 50.77 Setting up vim (2:8.1.0875-5+deb10u6) ...
+#13 50.78 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vim (vim) in auto mode
+#13 50.78 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vimdiff (vimdiff) in auto mode
+#13 50.78 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/rvim (rvim) in auto mode
+#13 50.79 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/rview (rview) in auto mode
+#13 50.79 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/vi (vi) in auto mode
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/da/man1/vi.1.gz because associated file /usr/share/man/da/man1/vim.1.gz (of link group vi) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/de/man1/vi.1.gz because associated file /usr/share/man/de/man1/vim.1.gz (of link group vi) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/fr/man1/vi.1.gz because associated file /usr/share/man/fr/man1/vim.1.gz (of link group vi) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/it/man1/vi.1.gz because associated file /usr/share/man/it/man1/vim.1.gz (of link group vi) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/ja/man1/vi.1.gz because associated file /usr/share/man/ja/man1/vim.1.gz (of link group vi) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/pl/man1/vi.1.gz because associated file /usr/share/man/pl/man1/vim.1.gz (of link group vi) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/ru/man1/vi.1.gz because associated file /usr/share/man/ru/man1/vim.1.gz (of link group vi) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/man1/vi.1.gz because associated file /usr/share/man/man1/vim.1.gz (of link group vi) doesn't exist
+#13 50.79 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/view (view) in auto mode
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/da/man1/view.1.gz because associated file /usr/share/man/da/man1/vim.1.gz (of link group view) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/de/man1/view.1.gz because associated file /usr/share/man/de/man1/vim.1.gz (of link group view) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/fr/man1/view.1.gz because associated file /usr/share/man/fr/man1/vim.1.gz (of link group view) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/it/man1/view.1.gz because associated file /usr/share/man/it/man1/vim.1.gz (of link group view) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/ja/man1/view.1.gz because associated file /usr/share/man/ja/man1/vim.1.gz (of link group view) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/pl/man1/view.1.gz because associated file /usr/share/man/pl/man1/vim.1.gz (of link group view) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/ru/man1/view.1.gz because associated file /usr/share/man/ru/man1/vim.1.gz (of link group view) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/man1/view.1.gz because associated file /usr/share/man/man1/vim.1.gz (of link group view) doesn't exist
+#13 50.79 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/ex (ex) in auto mode
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/da/man1/ex.1.gz because associated file /usr/share/man/da/man1/vim.1.gz (of link group ex) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/de/man1/ex.1.gz because associated file /usr/share/man/de/man1/vim.1.gz (of link group ex) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/fr/man1/ex.1.gz because associated file /usr/share/man/fr/man1/vim.1.gz (of link group ex) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/it/man1/ex.1.gz because associated file /usr/share/man/it/man1/vim.1.gz (of link group ex) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/ja/man1/ex.1.gz because associated file /usr/share/man/ja/man1/vim.1.gz (of link group ex) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/pl/man1/ex.1.gz because associated file /usr/share/man/pl/man1/vim.1.gz (of link group ex) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/ru/man1/ex.1.gz because associated file /usr/share/man/ru/man1/vim.1.gz (of link group ex) doesn't exist
+#13 50.79 update-alternatives: warning: skip creation of /usr/share/man/man1/ex.1.gz because associated file /usr/share/man/man1/vim.1.gz (of link group ex) doesn't exist
+#13 50.80 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/editor (editor) in auto mode
+#13 50.80 update-alternatives: warning: skip creation of /usr/share/man/da/man1/editor.1.gz because associated file /usr/share/man/da/man1/vim.1.gz (of link group editor) doesn't exist
+#13 50.80 update-alternatives: warning: skip creation of /usr/share/man/de/man1/editor.1.gz because associated file /usr/share/man/de/man1/vim.1.gz (of link group editor) doesn't exist
+#13 50.80 update-alternatives: warning: skip creation of /usr/share/man/fr/man1/editor.1.gz because associated file /usr/share/man/fr/man1/vim.1.gz (of link group editor) doesn't exist
+#13 50.80 update-alternatives: warning: skip creation of /usr/share/man/it/man1/editor.1.gz because associated file /usr/share/man/it/man1/vim.1.gz (of link group editor) doesn't exist
+#13 50.80 update-alternatives: warning: skip creation of /usr/share/man/ja/man1/editor.1.gz because associated file /usr/share/man/ja/man1/vim.1.gz (of link group editor) doesn't exist
+#13 50.80 update-alternatives: warning: skip creation of /usr/share/man/pl/man1/editor.1.gz because associated file /usr/share/man/pl/man1/vim.1.gz (of link group editor) doesn't exist
+#13 50.80 update-alternatives: warning: skip creation of /usr/share/man/ru/man1/editor.1.gz because associated file /usr/share/man/ru/man1/vim.1.gz (of link group editor) doesn't exist
+#13 50.80 update-alternatives: warning: skip creation of /usr/share/man/man1/editor.1.gz because associated file /usr/share/man/man1/vim.1.gz (of link group editor) doesn't exist
+#13 50.80 Setting up libxcb-render0:amd64 (1.13.1-2) ...
+#13 50.81 Setting up libldap-2.4-2:amd64 (2.4.47+dfsg-3+deb10u7) ...
+#13 50.82 Setting up libxcb-shm0:amd64 (1.13.1-2) ...
+#13 50.83 Setting up libthai0:amd64 (0.1.28-2) ...
+#13 50.84 Setting up libfreetype6:amd64 (2.9.1-3+deb10u3) ...
+#13 50.85 Setting up libgssapi-krb5-2:amd64 (1.17-3+deb10u6) ...
+#13 50.86 Setting up ucf (3.0038+nmu1) ...
+#13 50.91 debconf: unable to initialize frontend: Dialog
+#13 50.91 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#13 50.91 debconf: falling back to frontend: Readline
+#13 50.93 Setting up libx11-6:amd64 (2:1.6.7-1+deb10u4) ...
+#13 50.94 Setting up libharfbuzz0b:amd64 (2.3.1-1) ...
+#13 50.95 Setting up lynx (2.8.9rel.1-3+deb10u1) ...
+#13 50.95 update-alternatives: using /usr/bin/lynx to provide /usr/bin/www-browser (www-browser) in auto mode
+#13 50.95 update-alternatives: warning: skip creation of /usr/share/man/man1/www-browser.1.gz because associated file /usr/share/man/man1/lynx.1.gz (of link group www-browser) doesn't exist
+#13 50.96 Setting up rsync (3.1.3-6) ...
+#13 50.98 invoke-rc.d: could not determine current runlevel
+#13 50.98 invoke-rc.d: policy-rc.d denied execution of restart.
+#13 51.05 Setting up libxrender1:amd64 (1:0.9.10-1) ...
+#13 51.06 Setting up fontconfig-config (2.13.1-2) ...
+#13 51.11 debconf: unable to initialize frontend: Dialog
+#13 51.11 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#13 51.11 debconf: falling back to frontend: Readline
+#13 51.21 Setting up libxext6:amd64 (2:1.3.3-1+b2) ...
+#13 51.21 Setting up libcurl3-gnutls:amd64 (7.64.0-4+deb10u9) ...
+#13 51.22 Setting up libgdk-pixbuf2.0-0:amd64 (2.38.1+dfsg-1) ...
+#13 51.24 Setting up git (1:2.20.1-2+deb10u9) ...
+#13 51.26 Setting up libfontconfig1:amd64 (2.13.1-2) ...
+#13 51.27 Setting up fontconfig (2.13.1-2) ...
+#13 51.27 Regenerating fonts cache... done.
+#13 53.29 Setting up libpango-1.0-0:amd64 (1.42.4-8~deb10u1) ...
+#13 53.30 Setting up libcairo2:amd64 (1.16.0-4+deb10u1) ...
+#13 53.31 Setting up libpangoft2-1.0-0:amd64 (1.42.4-8~deb10u1) ...
+#13 53.32 Setting up libpangocairo-1.0-0:amd64 (1.42.4-8~deb10u1) ...
+#13 53.33 Processing triggers for libc-bin (2.28-10) ...
+#13 53.37 --2024-08-26 17:57:12--  https://launchpad.net/plone/5.2/5.2.14/+download/Plone-5.2.14-UnifiedInstaller-1.0.tgz
+#13 53.37 Resolving launchpad.net (launchpad.net)... 185.125.189.222, 185.125.189.223, 2620:2d:4000:1009::3ba, ...
+#13 53.59 Connecting to launchpad.net (launchpad.net)|185.125.189.222|:443... connected.
+#13 54.82 HTTP request sent, awaiting response... 303 See Other
+#13 55.12 Location: https://launchpadlibrarian.net/688430977/Plone-5.2.14-UnifiedInstaller-1.0.tgz [following]
+#13 55.12 --2024-08-26 17:57:14--  https://launchpadlibrarian.net/688430977/Plone-5.2.14-UnifiedInstaller-1.0.tgz
+#13 55.12 Resolving launchpadlibrarian.net (launchpadlibrarian.net)... 185.125.189.228, 185.125.189.229, 2620:2d:4000:1009::13e, ...
+#13 55.33 Connecting to launchpadlibrarian.net (launchpadlibrarian.net)|185.125.189.228|:443... connected.
+#13 56.58 HTTP request sent, awaiting response... 200 OK
+#13 56.89 Length: 5822819 (5.6M) [application/x-tar]
+#13 56.89 Saving to: ‘Plone.tgz’
+#13 56.89 
+#13 56.89      0K .......... .......... .......... .......... ..........  0%  193K 29s
+#13 57.15     50K .......... .......... .......... .......... ..........  1%  353K 22s
+#13 57.29    100K .......... .......... .......... .......... ..........  2%  697K 17s
+#13 57.36    150K .......... .......... .......... .......... ..........  3% 1021K 14s
+#13 57.41    200K .......... .......... .......... .......... ..........  4%  848K 13s
+#13 57.47    250K .......... .......... .......... .......... ..........  5%  561K 12s
+#13 57.56    300K .......... .......... .......... .......... ..........  6%  911K 11s
+#13 57.61    350K .......... .......... .......... .......... ..........  7%  674K 11s
+#13 57.69    400K .......... .......... .......... .......... ..........  7% 48.5M 9s
+#13 57.69    450K .......... .......... .......... .......... ..........  8%  853K 9s
+#13 57.75    500K .......... .......... .......... .......... ..........  9%  652K 9s
+#13 57.82    550K .......... .......... .......... .......... .......... 10% 24.0M 8s
+#13 57.82    600K .......... .......... .......... .......... .......... 11% 3.61M 7s
+#13 57.84    650K .......... .......... .......... .......... .......... 12%  412K 8s
+#13 57.96    700K .......... .......... .......... .......... .......... 13% 13.5M 7s
+#13 57.96    750K .......... .......... .......... .......... .......... 14% 15.3M 7s
+#13 57.97    800K .......... .......... .......... .......... .......... 14%  402K 7s
+#13 58.09    850K .......... .......... .......... .......... .......... 15% 3.20M 6s
+#13 58.11    900K .......... .......... .......... .......... .......... 16% 3.97M 6s
+#13 58.12    950K .......... .......... .......... .......... .......... 17% 1.09M 6s
+#13 58.16   1000K .......... .......... .......... .......... .......... 18%  746K 6s
+#13 58.23   1050K .......... .......... .......... .......... .......... 19% 13.7M 6s
+#13 58.23   1100K .......... .......... .......... .......... .......... 20%  378K 6s
+#13 58.37   1150K .......... .......... .......... .......... .......... 21% 17.8M 6s
+#13 58.37   1200K .......... .......... .......... .......... .......... 21% 32.3M 5s
+#13 58.37   1250K .......... .......... .......... .......... .......... 22%  351K 5s
+#13 58.51   1300K .......... .......... .......... .......... .......... 23% 60.7M 5s
+#13 58.51   1350K .......... .......... .......... .......... .......... 24% 29.7M 5s
+#13 58.51   1400K .......... .......... .......... .......... .......... 25%  362K 5s
+#13 58.65   1450K .......... .......... .......... .......... .......... 26% 2.00M 5s
+#13 58.68   1500K .......... .......... .......... .......... .......... 27%  538K 5s
+#13 58.77   1550K .......... .......... .......... .......... .......... 28% 1.17M 5s
+#13 58.81   1600K .......... .......... .......... .......... .......... 29%  529K 5s
+#13 58.91   1650K .......... .......... .......... .......... .......... 29% 15.5M 5s
+#13 58.91   1700K .......... .......... .......... .......... .......... 30%  861K 5s
+#13 58.97   1750K .......... .......... .......... .......... .......... 31%  727K 5s
+#13 59.04   1800K .......... .......... .......... .......... .......... 32% 2.14M 5s
+#13 59.06   1850K .......... .......... .......... .......... .......... 33%  443K 5s
+#13 59.17   1900K .......... .......... .......... .......... .......... 34% 36.1M 4s
+#13 59.17   1950K .......... .......... .......... .......... .......... 35% 1.10M 4s
+#13 59.22   2000K .......... .......... .......... .......... .......... 36%  554K 4s
+#13 59.31   2050K .......... .......... .......... .......... .......... 36% 16.8M 4s
+#13 59.31   2100K .......... .......... .......... .......... .......... 37% 1.17M 4s
+#13 59.35   2150K .......... .......... .......... .......... .......... 38%  547K 4s
+#13 59.44   2200K .......... .......... .......... .......... .......... 39% 21.9M 4s
+#13 59.45   2250K .......... .......... .......... .......... .......... 40% 1.18M 4s
+#13 59.49   2300K .......... .......... .......... .......... .......... 41%  461K 4s
+#13 59.60   2350K .......... .......... .......... .......... .......... 42% 19.6M 4s
+#13 59.60   2400K .......... .......... .......... .......... .......... 43% 2.09M 4s
+#13 59.62   2450K .......... .......... .......... .......... .......... 43%  429K 4s
+#13 59.74   2500K .......... .......... .......... .......... .......... 44% 39.8M 4s
+#13 59.74   2550K .......... .......... .......... .......... .......... 45% 2.66M 3s
+#13 59.76   2600K .......... .......... .......... .......... .......... 46%  373K 3s
+#13 59.89   2650K .......... .......... .......... .......... .......... 47% 19.8M 3s
+#13 59.98   2700K .......... .......... .......... .......... .......... 48%  556K 3s
+#13 60.01   2750K .......... .......... .......... .......... .......... 49% 1.13M 3s
+#13 60.03   2800K .......... .......... .......... .......... .......... 50%  555K 3s
+#13 60.12   2850K .......... .......... .......... .......... .......... 50% 1.60M 3s
+#13 60.15   2900K .......... .......... .......... .......... .......... 51% 2.30M 3s
+#13 60.17   2950K .......... .......... .......... .......... .......... 52%  586K 3s
+#13 60.25   3000K .......... .......... .......... .......... .......... 53% 3.31M 3s
+#13 60.27   3050K .......... .......... .......... .......... .......... 54%  421K 3s
+#13 60.39   3100K .......... .......... .......... .......... .......... 55% 26.8M 3s
+#13 60.39   3150K .......... .......... .......... .......... .......... 56% 2.47M 3s
+#13 60.41   3200K .......... .......... .......... .......... .......... 57%  429K 3s
+#13 60.53   3250K .......... .......... .......... .......... .......... 58% 30.5M 3s
+#13 60.53   3300K .......... .......... .......... .......... .......... 58% 3.09M 3s
+#13 60.54   3350K .......... .......... .......... .......... .......... 59%  427K 3s
+#13 60.66   3400K .......... .......... .......... .......... .......... 60% 4.60M 2s
+#13 60.67   3450K .......... .......... .......... .......... .......... 61% 17.3M 2s
+#13 60.67   3500K .......... .......... .......... .......... .......... 62%  411K 2s
+#13 60.80   3550K .......... .......... .......... .......... .......... 63% 4.28M 2s
+#13 60.81   3600K .......... .......... .......... .......... .......... 64% 20.4M 2s
+#13 60.81   3650K .......... .......... .......... .......... .......... 65%  412K 2s
+#13 60.93   3700K .......... .......... .......... .......... .......... 65% 4.21M 2s
+#13 60.94   3750K .......... .......... .......... .......... .......... 66% 14.5M 2s
+#13 60.95   3800K .......... .......... .......... .......... .......... 67%  499K 2s
+#13 61.05   3850K .......... .......... .......... .......... .......... 68% 1.34M 2s
+#13 61.08   3900K .......... .......... .......... .......... .......... 69% 21.3M 2s
+#13 61.08   3950K .......... .......... .......... .......... .......... 70%  551K 2s
+#13 61.18   4000K .......... .......... .......... .......... .......... 71% 1.26M 2s
+#13 61.21   4050K .......... .......... .......... .......... .......... 72% 13.3M 2s
+#13 61.22   4100K .......... .......... .......... .......... .......... 72%  490K 2s
+#13 61.32   4150K .......... .......... .......... .......... .......... 73% 1.65M 2s
+#13 61.35   4200K .......... .......... .......... .......... .......... 74% 31.0M 2s
+#13 61.35   4250K .......... .......... .......... .......... .......... 75%  471K 1s
+#13 61.47   4300K .......... .......... .......... .......... .......... 76% 1.64M 1s
+#13 61.49   4350K .......... .......... .......... .......... .......... 77% 6.72M 1s
+#13 61.49   4400K .......... .......... .......... .......... .......... 78%  574K 1s
+#13 61.58   4450K .......... .......... .......... .......... .......... 79% 1.08M 1s
+#13 61.63   4500K .......... .......... .......... .......... .......... 80% 22.9M 1s
+#13 61.63   4550K .......... .......... .......... .......... .......... 80%  732K 1s
+#13 61.70   4600K .......... .......... .......... .......... .......... 81%  621K 1s
+#13 61.78   4650K .......... .......... .......... .......... .......... 82% 17.5M 1s
+#13 61.78   4700K .......... .......... .......... .......... .......... 83% 1.15M 1s
+#13 61.85   4750K .......... .......... .......... .......... .......... 84%  633K 1s
+#13 61.90   4800K .......... .......... .......... .......... .......... 85% 12.4M 1s
+#13 61.90   4850K .......... .......... .......... .......... .......... 86%  945K 1s
+#13 61.98   4900K .......... .......... .......... .......... .......... 87%  676K 1s
+#13 62.03   4950K .......... .......... .......... .......... .......... 87% 28.3M 1s
+#13 62.03   5000K .......... .......... .......... .......... .......... 88% 2.06M 1s
+#13 62.06   5050K .......... .......... .......... .......... .......... 89%  460K 1s
+#13 62.17   5100K .......... .......... .......... .......... .......... 90% 11.4M 1s
+#13 62.17   5150K .......... .......... .......... .......... .......... 91% 1.75M 0s
+#13 62.20   5200K .......... .......... .......... .......... .......... 92%  452K 0s
+#13 62.31   5250K .......... .......... .......... .......... .......... 93% 25.1M 0s
+#13 62.31   5300K .......... .......... .......... .......... .......... 94% 2.25M 0s
+#13 62.33   5350K .......... .......... .......... .......... .......... 94%  374K 0s
+#13 62.47   5400K .......... .......... .......... .......... .......... 95%  792K 0s
+#13 62.53   5450K .......... .......... .......... .......... .......... 96% 1.11M 0s
+#13 62.57   5500K .......... .......... .......... .......... .......... 97% 1.50M 0s
+#13 62.61   5550K .......... .......... .......... .......... .......... 98%  707K 0s
+#13 62.68   5600K .......... .......... .......... .......... .......... 99% 2.69M 0s
+#13 62.69   5650K .......... .......... .......... ......               100%  618K=5.9s
+#13 62.75 
+#13 62.75 2024-08-26 17:57:21 (969 KB/s) - ‘Plone.tgz’ saved [5822819/5822819]
+#13 62.75 
+#13 62.77 Plone.tgz: OK
+#13 62.80 'Plone-5.2.14-UnifiedInstaller-1.0/base_skeleton/base.cfg' -> '/home/senaite/senaitelims/base.cfg'
+#13 62.80 'Plone-5.2.14-UnifiedInstaller-1.0/base_skeleton/develop.cfg' -> '/home/senaite/senaitelims/develop.cfg'
+#13 62.80 'Plone-5.2.14-UnifiedInstaller-1.0/base_skeleton/lxml_static.cfg' -> '/home/senaite/senaitelims/lxml_static.cfg'
+#13 62.80 'Plone-5.2.14-UnifiedInstaller-1.0/base_skeleton/products' -> '/home/senaite/senaitelims/products'
+#13 62.80 'Plone-5.2.14-UnifiedInstaller-1.0/base_skeleton/products/README.txt' -> '/home/senaite/senaitelims/products/README.txt'
+#13 62.80 'Plone-5.2.14-UnifiedInstaller-1.0/base_skeleton/requirements.txt' -> '/home/senaite/senaitelims/requirements.txt'
+#13 62.80 'Plone-5.2.14-UnifiedInstaller-1.0/base_skeleton/var' -> '/home/senaite/senaitelims/var'
+#13 62.80 'Plone-5.2.14-UnifiedInstaller-1.0/base_skeleton/var/README.txt' -> '/home/senaite/senaitelims/var/README.txt'
+#13 62.80 'Plone-5.2.14-UnifiedInstaller-1.0/buildout_templates/buildout.cfg' -> '/home/senaite/senaitelims/buildout-base.cfg'
+#13 63.55 DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+#13 64.19 Ignoring setuptools: markers 'python_version >= "3.0"' don't match your environment
+#13 64.19 Ignoring zc.buildout: markers 'python_version >= "3.0"' don't match your environment
+#13 64.19 Ignoring wheel: markers 'python_version >= "3.0"' don't match your environment
+#13 64.19 Ignoring pywin32: markers 'platform_system == "Windows"' don't match your environment
+#13 64.19 Ignoring certifi: markers 'platform_system == "Windows"' don't match your environment
+#13 64.19 Ignoring ntfsutils: markers 'platform_system == "Windows" and python_version < "3.0"' don't match your environment
+#13 65.04 Collecting setuptools==42.0.2
+#13 65.40   Downloading setuptools-42.0.2-py2.py3-none-any.whl (583 kB)
+#13 65.90 Collecting zc.buildout==2.13.8
+#13 65.97   Downloading zc.buildout-2.13.8-py2.py3-none-any.whl (154 kB)
+#13 66.17 Collecting wheel==0.37.1
+#13 66.23   Downloading wheel-0.37.1-py2.py3-none-any.whl (35 kB)
+#13 66.26 Installing collected packages: setuptools, zc.buildout, wheel
+#13 66.26   Attempting uninstall: setuptools
+#13 66.26     Found existing installation: setuptools 44.1.0
+#13 66.27     Uninstalling setuptools-44.1.0:
+#13 66.32       Successfully uninstalled setuptools-44.1.0
+#13 66.47   Attempting uninstall: wheel
+#13 66.47     Found existing installation: wheel 0.34.2
+#13 66.47     Uninstalling wheel-0.34.2:
+#13 66.48       Successfully uninstalled wheel-0.34.2
+#13 66.50 Successfully installed setuptools-42.0.2 wheel-0.37.1 zc.buildout-2.13.8
+#13 66.93 WARNING: You are using pip version 20.0.2; however, version 20.3.4 is available.
+#13 66.93 You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+#13 68.52 Creating directory '/home/senaite/buildout-cache/downloads'.
+#13 68.52 Creating directory '/home/senaite/senaitelims/eggs/cp27mu'.
+#13 69.57 Getting distribution for 'mr.developer==2.0.1'.
+#13 69.89 Got mr.developer 2.0.1.
+#13 70.47 Getting distribution for 'six==1.16.0'.
+#13 70.72 Got six 1.16.0.
+#13 70.74 mr.developer: Queued 'senaite.app.listing' for checkout.
+#13 70.74 mr.developer: Queued 'senaite.app.spotlight' for checkout.
+#13 70.74 mr.developer: Queued 'senaite.app.supermodel' for checkout.
+#13 70.74 mr.developer: Queued 'senaite.core' for checkout.
+#13 70.74 mr.developer: Queued 'senaite.databox' for checkout.
+#13 70.74 mr.developer: Queued 'senaite.impress' for checkout.
+#13 70.74 mr.developer: Queued 'senaite.instruments' for checkout.
+#13 70.74 mr.developer: Queued 'senaite.jsonapi' for checkout.
+#13 70.74 mr.developer: Queued 'senaite.lims' for checkout.
+#13 70.74 mr.developer: Queued 'senaite.lis2a' for checkout.
+#13 70.74 mr.developer: Queued 'senaite.storage' for checkout.
+#13 72.22 mr.developer: Cloned 'senaite.app.supermodel' with git using branch '2.x' from 'https://github.com/senaite/senaite.app.supermodel.git'.
+#13 72.49 mr.developer: Cloned 'senaite.app.spotlight' with git using branch '2.x' from 'https://github.com/senaite/senaite.app.spotlight.git'.
+#13 74.21 mr.developer: Cloned 'senaite.instruments' with git using branch 'main' from 'https://github.com/bikalims/senaite.instruments.git'.
+#13 75.62 mr.developer: Cloned 'senaite.jsonapi' with git using branch '2.x' from 'https://github.com/senaite/senaite.jsonapi.git'.
+#13 76.46 mr.developer: Cloned 'senaite.databox' with git using branch 'master' from 'https://github.com/senaite/senaite.databox.git'.
+#13 77.69 mr.developer: Cloned 'senaite.lis2a' with git using branch '2.x' from 'https://github.com/senaite/senaite.lis2a.git'.
+#13 78.01 mr.developer: Cloned 'senaite.lims' with git using branch '2.x' from 'https://github.com/senaite/senaite.lims.git'.
+#13 78.39 mr.developer: Cloned 'senaite.app.listing' with git using branch '2.x' from 'https://github.com/senaite/senaite.app.listing.git'.
+#13 80.98 mr.developer: Cloned 'senaite.storage' with git using branch '2.x' from 'https://github.com/senaite/senaite.storage.git'.
+#13 81.35 mr.developer: Cloned 'senaite.impress' with git using branch '2.x' from 'https://github.com/senaite/senaite.impress.git'.
+#13 140.5 mr.developer: Cloned 'senaite.core' with git using branch '2.x' from 'https://github.com/senaite/senaite.core.git'.
+#13 140.5 Creating directory '/home/senaite/senaitelims/bin'.
+#13 140.5 Creating directory '/home/senaite/senaitelims/parts'.
+#13 140.5 Creating directory '/home/senaite/senaitelims/develop-eggs'.
+#13 140.5 Develop: '/home/senaite/senaitelims/src/senaite.OESinterface'
+#13 140.6 warning: no previously-included files matching '*.pyc' found anywhere in distribution
+#13 140.6 Develop: '/home/senaite/senaitelims/src/senaite.lims'
+#13 140.7 warning: no files found matching '*.rst'
+#13 140.7 warning: no previously-included files matching '*.pyc' found under directory 'src/senaite'
+#13 140.7 Develop: '/home/senaite/senaitelims/src/senaite.storage'
+#13 140.8 warning: no previously-included files matching '*' found under directory 'static'
+#13 140.8 warning: no previously-included files matching '*' found under directory 'docs'
+#13 140.8 warning: no previously-included files matching '*.pyc' found under directory 'src/senaite/storage'
+#13 140.9 Develop: '/home/senaite/senaitelims/src/senaite.lis2a'
+#13 141.0 warning: no files found matching '*.md'
+#13 141.0 warning: no previously-included files matching '*' found under directory 'static'
+#13 141.0 warning: no previously-included files matching '*.pyc' found under directory 'src/senaite/lis2a'
+#13 141.0 warning: no previously-included files matching '*.mo' found under directory 'src/senaite/lis2a'
+#13 141.0 warning: no previously-included files matching '*' found under directory 'src/senaite/lis2a/locales/.tx'
+#13 141.0 Develop: '/home/senaite/senaitelims/src/senaite.impress'
+#13 141.1 warning: no files found matching '*.rst'
+#13 141.1 warning: no previously-included files matching '*' found under directory 'static'
+#13 141.1 warning: no previously-included files matching '*.pyc' found under directory 'src/senaite/impress'
+#13 141.1 warning: no previously-included files matching '*.mo' found under directory 'src/senaite/impress'
+#13 141.1 warning: no previously-included files matching '*' found under directory 'src/senaite/impress/static/js/node_modules'
+#13 141.1 warning: no previously-included files matching '*' found under directory 'src/senaite/impress/static/js/src'
+#13 141.1 warning: no previously-included files matching '*' found under directory 'node_modules'
+#13 141.1 Develop: '/home/senaite/senaitelims/src/senaite.app.spotlight'
+#13 141.2 warning: no files found matching '*.rst'
+#13 141.2 warning: no previously-included files matching '*.pyc' found under directory 'src/senaite'
+#13 141.2 warning: no previously-included files matching '*.pyc' found under directory 'src/senaite/app/spotlight'
+#13 141.2 warning: no previously-included files matching '*' found under directory 'src/senaite/app/spotlight/tests'
+#13 141.2 warning: no previously-included files matching '*' found under directory 'src/senaite/app/spotlight/docs'
+#13 141.2 warning: no previously-included files matching '*' found under directory 'src/senaite/app/spotlight/static/src'
+#13 141.2 Develop: '/home/senaite/senaitelims/src/senaite.app.listing'
+#13 141.3 warning: no files found matching '*.rst'
+#13 141.3 warning: no previously-included files matching '*' found under directory 'webpack'
+#13 141.3 warning: no previously-included files matching '*.pyc' found under directory 'src'
+#13 141.3 Develop: '/home/senaite/senaitelims/src/senaite.app.supermodel'
+#13 141.4 warning: no previously-included files matching '*.pyc' found under directory 'src/senaite/app/supermodel'
+#13 141.4 Develop: '/home/senaite/senaitelims/src/senaite.instruments'
+#13 141.5 warning: no files found matching 'README.md'
+#13 141.5 warning: no previously-included files matching '*.pyc' found under directory 'src/senaite/instruments'
+#13 141.5 Develop: '/home/senaite/senaitelims/src/senaite.databox'
+#13 141.6 warning: no previously-included files matching '*.pyc' found under directory 'src/senaite/databox'
+#13 141.6 warning: no previously-included files matching '*' found under directory 'src/senaite/databox/docs'
+#13 141.7 Develop: '/home/senaite/senaitelims/src/senaite.core'
+#13 141.8 warning: no previously-included files matching '*' found under directory 'docs'
+#13 141.8 warning: no previously-included files matching '*' found under directory 'src/senaite/app/listing'
+#13 141.8 warning: no previously-included files matching '*' found under directory 'src/senaite/app/spotlight'
+#13 141.8 warning: no previously-included files matching '*' found under directory 'src/senaite/app/supermodel'
+#13 141.8 warning: no previously-included files matching '*.pyc' found under directory 'src'
+#13 141.8 warning: no previously-included files matching '*' found under directory 'webpack'
+#13 141.9 Develop: '/home/senaite/senaitelims/src/senaite.jsonapi'
+#13 142.0 warning: no files found matching 'README.md'
+#13 142.0 warning: no files found matching '*.md'
+#13 142.0 warning: no previously-included files matching '*.pyc' found under directory 'src/senaite/jsonapi'
+#13 143.2 Getting distribution for 'zc.recipe.egg==2.0.7'.
+#13 143.6 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 143.8 Got zc.recipe.egg 2.0.7.
+#13 145.0 Getting distribution for 'plone.recipe.zope2instance==6.12.1'.
+#13 145.3 Got plone.recipe.zope2instance 6.12.1.
+#13 146.1 Getting distribution for 'waitress==1.4.4'.
+#13 146.4 Got waitress 1.4.4.
+#13 147.1 Getting distribution for 'python-dotenv==0.18.0'.
+#13 147.4 Got python-dotenv 0.18.0.
+#13 148.5 Getting distribution for 'Zope==4.8.10'.
+#13 149.6 Got Zope 4.8.10.
+#13 150.6 Getting distribution for 'ZODB==5.8.0'.
+#13 151.1 Got ZODB 5.8.0.
+#13 152.3 Getting distribution for 'ZEO==5.3.0'.
+#13 152.7 Got ZEO 5.3.0.
+#13 153.9 Getting distribution for 'Paste==3.5.2'.
+#13 154.4 Got Paste 3.5.2.
+#13 155.1 Getting distribution for 'typing==3.10.0.0'.
+#13 155.4 Got typing 3.10.0.0.
+#13 156.3 Getting distribution for 'zope.viewlet==4.3'.
+#13 156.6 Got zope.viewlet 4.3.
+#13 157.5 Getting distribution for 'zope.traversing==4.4.1'.
+#13 157.8 Got zope.traversing 4.4.1.
+#13 158.7 Getting distribution for 'zope.testing==4.10'.
+#13 159.0 Got zope.testing 4.10.
+#13 160.0 Getting distribution for 'zope.testbrowser==5.6.1'.
+#13 160.3 Got zope.testbrowser 5.6.1.
+#13 161.1 Getting distribution for 'zope.tales==5.2'.
+#13 161.4 Got zope.tales 5.2.
+#13 162.3 Getting distribution for 'zope.tal==4.5'.
+#13 162.7 Got zope.tal 4.5.
+#13 163.7 Getting distribution for 'zope.size==4.4'.
+#13 163.9 Got zope.size 4.4.
+#13 164.9 Getting distribution for 'zope.site==4.6.1'.
+#13 165.2 Got zope.site 4.6.1.
+#13 166.2 Getting distribution for 'zope.sequencesort==4.2'.
+#13 166.5 Got zope.sequencesort 4.2.
+#13 167.8 Getting distribution for 'zope.security==5.8'.
+#13 168.2 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 168.4 DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+#13 169.9 DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+#13 171.7 warning: no files found matching '*.txt' under directory 'docs'
+#13 172.6 Got zope.security 5.8.
+#13 173.6 Getting distribution for 'zope.schema==6.2.1'.
+#13 173.9 Got zope.schema 6.2.1.
+#13 174.9 Getting distribution for 'zope.publisher==6.1.0'.
+#13 175.3 Got zope.publisher 6.1.0.
+#13 176.2 Getting distribution for 'zope.ptresource==4.3.0'.
+#13 176.6 Got zope.ptresource 4.3.0.
+#13 177.9 Getting distribution for 'zope.proxy==4.6.1'.
+#13 178.3 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 178.7 Got zope.proxy 4.6.1.
+#13 179.6 Getting distribution for 'zope.processlifetime==2.4'.
+#13 179.8 Got zope.processlifetime 2.4.
+#13 180.8 Getting distribution for 'zope.pagetemplate==4.6.0'.
+#13 181.1 Got zope.pagetemplate 4.6.0.
+#13 182.0 Getting distribution for 'zope.location==4.3'.
+#13 182.3 Got zope.location 4.3.
+#13 183.2 Getting distribution for 'zope.lifecycleevent==4.4'.
+#13 183.5 Got zope.lifecycleevent 4.4.
+#13 185.4 Getting distribution for 'zope.interface==5.5.2'.
+#13 186.0 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 187.4 Got zope.interface 5.5.2.
+#13 188.5 Getting distribution for 'zope.i18nmessageid==5.1.1'.
+#13 188.9 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 189.1 Got zope.i18nmessageid 5.1.1.
+#13 190.0 Getting distribution for 'zope.i18n[zcml]==4.9.0'.
+#13 190.8 Got zope.i18n 4.9.0.
+#13 191.7 Getting distribution for 'zope.globalrequest==1.6'.
+#13 192.0 Got zope.globalrequest 1.6.
+#13 192.9 Getting distribution for 'zope.exceptions==4.6'.
+#13 193.2 Got zope.exceptions 4.6.
+#13 194.1 Getting distribution for 'zope.event==4.6'.
+#13 194.4 Got zope.event 4.6.
+#13 195.3 Getting distribution for 'zope.deferredimport==4.4'.
+#13 195.6 Got zope.deferredimport 4.4.
+#13 196.5 Getting distribution for 'zope.datetime==4.3.0'.
+#13 197.3 Got zope.datetime 4.3.0.
+#13 198.7 Getting distribution for 'zope.contenttype==4.6'.
+#13 199.3 Got zope.contenttype 4.6.
+#13 200.5 Getting distribution for 'zope.contentprovider==4.2.1'.
+#13 201.1 Got zope.contentprovider 4.2.1.
+#13 202.6 Getting distribution for 'zope.container==4.10'.
+#13 203.2 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 203.3 DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+#13 203.9 DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+#13 208.4 DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+#13 209.2 DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+#13 210.0 DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+#13 210.3 warning: no files found matching 'buildout.cfg'
+#13 211.0 Got zope.container 4.10.
+#13 211.9 Getting distribution for 'zope.configuration==4.4.1'.
+#13 212.3 Got zope.configuration 4.4.1.
+#13 213.2 Getting distribution for 'zope.component==4.6.2'.
+#13 213.6 Got zope.component 4.6.2.
+#13 214.5 Getting distribution for 'zope.browserresource==4.4'.
+#13 214.9 Got zope.browserresource 4.4.
+#13 215.8 Getting distribution for 'zope.browserpage==4.4.0'.
+#13 216.1 Got zope.browserpage 4.4.0.
+#13 217.0 Getting distribution for 'zope.browsermenu==4.4'.
+#13 217.4 Got zope.browsermenu 4.4.
+#13 218.4 Getting distribution for 'zope.browser==2.4'.
+#13 218.7 Got zope.browser 2.4.
+#13 219.6 Getting distribution for 'zExceptions==4.3'.
+#13 219.8 Got zExceptions 4.3.
+#13 220.9 Getting distribution for 'z3c.pt==3.3.1'.
+#13 221.3 Got z3c.pt 3.3.1.
+#13 222.0 Getting distribution for 'transaction==3.0.1'.
+#13 222.4 Got transaction 3.0.1.
+#13 223.0 Getting distribution for 'ipaddress==1.0.23'.
+#13 223.3 Got ipaddress 1.0.23.
+#13 224.3 Getting distribution for 'ZConfig==3.6.1'.
+#13 224.9 Got ZConfig 3.6.1.
+#13 225.9 Getting distribution for 'RestrictedPython==5.4'.
+#13 226.3 Got RestrictedPython 5.4.
+#13 227.5 Getting distribution for 'Persistence==3.6'.
+#13 227.9 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 228.1 Got Persistence 3.6.
+#13 229.1 Getting distribution for 'PasteDeploy==2.1.1'.
+#13 229.4 Got PasteDeploy 2.1.1.
+#13 230.4 Getting distribution for 'MultiMapping==4.1'.
+#13 230.6 Got MultiMapping 4.1.
+#13 231.9 Getting distribution for 'ExtensionClass==4.9'.
+#13 232.2 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 232.7 Got ExtensionClass 4.9.
+#13 233.7 Getting distribution for 'DocumentTemplate==3.4'.
+#13 234.1 Got DocumentTemplate 3.4.
+#13 235.0 Getting distribution for 'DateTime==4.9'.
+#13 235.4 Got DateTime 4.9.
+#13 236.7 Getting distribution for 'Chameleon==3.9.1'.
+#13 237.2 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 237.6 Got Chameleon 3.9.1.
+#13 239.3 Getting distribution for 'BTrees==4.11.3'.
+#13 240.0 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 240.2 DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+#13 240.9 DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+#13 241.7 DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+#13 242.5 DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+#13 242.9 In file included from src/BTrees/_IOBTree.c:39:
+#13 242.9 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 242.9  BTree_ShouldSuppressKeyError()
+#13 242.9  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 244.0 In file included from src/BTrees/_IIBTree.c:41:
+#13 244.0 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 244.0  BTree_ShouldSuppressKeyError()
+#13 244.0  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 245.2 In file included from src/BTrees/_IFBTree.c:41:
+#13 245.2 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 245.2  BTree_ShouldSuppressKeyError()
+#13 245.2  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 246.4 In file included from src/BTrees/_IUBTree.c:43:
+#13 246.4 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 246.4  BTree_ShouldSuppressKeyError()
+#13 246.4  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 247.5 In file included from src/BTrees/_UOBTree.c:39:
+#13 247.5 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 247.5  BTree_ShouldSuppressKeyError()
+#13 247.5  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 248.6 In file included from src/BTrees/_UUBTree.c:43:
+#13 248.6 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 248.6  BTree_ShouldSuppressKeyError()
+#13 248.6  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 249.7 In file included from src/BTrees/_UFBTree.c:42:
+#13 249.7 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 249.7  BTree_ShouldSuppressKeyError()
+#13 249.7  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 250.9 In file included from src/BTrees/_UIBTree.c:42:
+#13 250.9 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 250.9  BTree_ShouldSuppressKeyError()
+#13 250.9  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 252.0 In file included from src/BTrees/_LOBTree.c:41:
+#13 252.0 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 252.0  BTree_ShouldSuppressKeyError()
+#13 252.0  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 253.1 In file included from src/BTrees/_LLBTree.c:43:
+#13 253.1 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 253.1  BTree_ShouldSuppressKeyError()
+#13 253.1  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 254.2 In file included from src/BTrees/_LFBTree.c:43:
+#13 254.2 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 254.2  BTree_ShouldSuppressKeyError()
+#13 254.2  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 255.3 In file included from src/BTrees/_LQBTree.c:44:
+#13 255.3 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 255.3  BTree_ShouldSuppressKeyError()
+#13 255.3  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 255.4 src/BTrees/BTreeModuleTemplate.c:104:1: warning: ‘ulonglong_check’ defined but not used [-Wunused-function]
+#13 255.4  ulonglong_check(PyObject *ob)
+#13 255.4  ^~~~~~~~~~~~~~~
+#13 256.5 In file included from src/BTrees/_QOBTree.c:42:
+#13 256.5 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 256.5  BTree_ShouldSuppressKeyError()
+#13 256.5  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 256.5 src/BTrees/BTreeModuleTemplate.c:210:1: warning: ‘longlong_convert’ defined but not used [-Wunused-function]
+#13 256.5  longlong_convert(PyObject *ob, PY_LONG_LONG *value)
+#13 256.5  ^~~~~~~~~~~~~~~~
+#13 256.5 src/BTrees/BTreeModuleTemplate.c:202:1: warning: ‘longlong_as_object’ defined but not used [-Wunused-function]
+#13 256.5  longlong_as_object(PY_LONG_LONG val)
+#13 256.5  ^~~~~~~~~~~~~~~~~~
+#13 256.5 src/BTrees/BTreeModuleTemplate.c:133:1: warning: ‘longlong_check’ defined but not used [-Wunused-function]
+#13 256.5  longlong_check(PyObject *ob)
+#13 256.5  ^~~~~~~~~~~~~~
+#13 257.6 In file included from src/BTrees/_QQBTree.c:45:
+#13 257.6 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 257.6  BTree_ShouldSuppressKeyError()
+#13 257.6  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 257.6 src/BTrees/BTreeModuleTemplate.c:210:1: warning: ‘longlong_convert’ defined but not used [-Wunused-function]
+#13 257.6  longlong_convert(PyObject *ob, PY_LONG_LONG *value)
+#13 257.6  ^~~~~~~~~~~~~~~~
+#13 257.6 src/BTrees/BTreeModuleTemplate.c:202:1: warning: ‘longlong_as_object’ defined but not used [-Wunused-function]
+#13 257.6  longlong_as_object(PY_LONG_LONG val)
+#13 257.6  ^~~~~~~~~~~~~~~~~~
+#13 257.6 src/BTrees/BTreeModuleTemplate.c:133:1: warning: ‘longlong_check’ defined but not used [-Wunused-function]
+#13 257.6  longlong_check(PyObject *ob)
+#13 257.6  ^~~~~~~~~~~~~~
+#13 258.7 In file included from src/BTrees/_QFBTree.c:44:
+#13 258.7 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 258.7  BTree_ShouldSuppressKeyError()
+#13 258.7  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 258.7 src/BTrees/BTreeModuleTemplate.c:210:1: warning: ‘longlong_convert’ defined but not used [-Wunused-function]
+#13 258.7  longlong_convert(PyObject *ob, PY_LONG_LONG *value)
+#13 258.7  ^~~~~~~~~~~~~~~~
+#13 258.7 src/BTrees/BTreeModuleTemplate.c:202:1: warning: ‘longlong_as_object’ defined but not used [-Wunused-function]
+#13 258.7  longlong_as_object(PY_LONG_LONG val)
+#13 258.7  ^~~~~~~~~~~~~~~~~~
+#13 258.7 src/BTrees/BTreeModuleTemplate.c:133:1: warning: ‘longlong_check’ defined but not used [-Wunused-function]
+#13 258.7  longlong_check(PyObject *ob)
+#13 258.7  ^~~~~~~~~~~~~~
+#13 259.8 In file included from src/BTrees/_QLBTree.c:44:
+#13 259.8 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 259.8  BTree_ShouldSuppressKeyError()
+#13 259.8  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 259.9 src/BTrees/BTreeModuleTemplate.c:133:1: warning: ‘longlong_check’ defined but not used [-Wunused-function]
+#13 259.9  longlong_check(PyObject *ob)
+#13 259.9  ^~~~~~~~~~~~~~
+#13 260.9 In file included from src/BTrees/_OOBTree.c:39:
+#13 260.9 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 260.9  BTree_ShouldSuppressKeyError()
+#13 260.9  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 262.0 In file included from src/BTrees/_OIBTree.c:39:
+#13 262.0 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 262.0  BTree_ShouldSuppressKeyError()
+#13 262.0  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 263.0 In file included from src/BTrees/_OUBTree.c:41:
+#13 263.0 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 263.0  BTree_ShouldSuppressKeyError()
+#13 263.0  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 264.1 In file included from src/BTrees/_OLBTree.c:41:
+#13 264.1 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 264.1  BTree_ShouldSuppressKeyError()
+#13 264.1  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 265.1 In file included from src/BTrees/_OQBTree.c:42:
+#13 265.1 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 265.1  BTree_ShouldSuppressKeyError()
+#13 265.1  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 265.1 src/BTrees/BTreeModuleTemplate.c:210:1: warning: ‘longlong_convert’ defined but not used [-Wunused-function]
+#13 265.1  longlong_convert(PyObject *ob, PY_LONG_LONG *value)
+#13 265.1  ^~~~~~~~~~~~~~~~
+#13 265.1 src/BTrees/BTreeModuleTemplate.c:202:1: warning: ‘longlong_as_object’ defined but not used [-Wunused-function]
+#13 265.1  longlong_as_object(PY_LONG_LONG val)
+#13 265.1  ^~~~~~~~~~~~~~~~~~
+#13 266.1 In file included from src/BTrees/_fsBTree.c:93:
+#13 266.1 src/BTrees/BTreeModuleTemplate.c:521:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+#13 266.1  BTree_ShouldSuppressKeyError()
+#13 266.1  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#13 268.2 Got BTrees 4.11.3.
+#13 269.6 Getting distribution for 'Acquisition==4.13'.
+#13 270.1 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 270.6 Got Acquisition 4.13.
+#13 272.0 Getting distribution for 'AccessControl==4.4'.
+#13 272.4 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 273.5 Got AccessControl 4.4.
+#13 274.6 Getting distribution for 'zodbpickle==2.6'.
+#13 275.2 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 276.3   File "build/bdist.linux-x86_64/egg/zodbpickle/pickletools_3.py", line 2049
+#13 276.3     print("%5d:" % pos, end=' ', file=out)
+#13 276.3                            ^
+#13 276.3 SyntaxError: invalid syntax
+#13 276.3 
+#13 276.3   File "build/bdist.linux-x86_64/egg/zodbpickle/tests/pickletester_3.py", line 147
+#13 276.3     class use_metaclass(object, metaclass=metaclass):
+#13 276.3                                          ^
+#13 276.3 SyntaxError: invalid syntax
+#13 276.3 
+#13 276.3   File "build/bdist.linux-x86_64/egg/zodbpickle/pickle_3.py", line 178
+#13 276.3     def __init__(self, file, protocol=None, *, fix_imports=True):
+#13 276.3                                              ^
+#13 276.3 SyntaxError: invalid syntax
+#13 276.3 
+#13 276.4   File "/home/senaite/senaitelims/eggs/cp27mu/tmpTpjdox/zodbpickle-2.6-py2.7-linux-x86_64.egg/zodbpickle/pickle_3.py", line 178
+#13 276.4     def __init__(self, file, protocol=None, *, fix_imports=True):
+#13 276.4                                              ^
+#13 276.4 SyntaxError: invalid syntax
+#13 276.4 
+#13 276.4   File "/home/senaite/senaitelims/eggs/cp27mu/tmpTpjdox/zodbpickle-2.6-py2.7-linux-x86_64.egg/zodbpickle/pickletools_3.py", line 2049
+#13 276.4     print("%5d:" % pos, end=' ', file=out)
+#13 276.4                            ^
+#13 276.4 SyntaxError: invalid syntax
+#13 276.4 
+#13 276.4   File "/home/senaite/senaitelims/eggs/cp27mu/tmpTpjdox/zodbpickle-2.6-py2.7-linux-x86_64.egg/zodbpickle/tests/pickletester_3.py", line 147
+#13 276.4     class use_metaclass(object, metaclass=metaclass):
+#13 276.4                                          ^
+#13 276.4 SyntaxError: invalid syntax
+#13 276.4 
+#13 276.6 Got zodbpickle 2.6.
+#13 277.4 Getting distribution for 'zc.lockfile==2.0'.
+#13 277.8 Got zc.lockfile 2.0.
+#13 279.1 Getting distribution for 'persistent==4.9.3'.
+#13 279.6 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 279.8 DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+#13 280.6 DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+#13 282.1 Got persistent 4.9.3.
+#13 282.7 Getting distribution for 'zdaemon==4.4'.
+#13 283.1 Got zdaemon 4.4.
+#13 283.8 Getting distribution for 'trollius==2.2.post1'.
+#13 284.3 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 284.4 warning: no files found matching 'release.py'
+#13 284.9 Got trollius 2.2.post1.
+#13 285.5 Getting distribution for 'futures==3.3.0'.
+#13 285.7 Got futures 3.3.0.
+#13 286.7 Getting distribution for 'zope.cachedescriptors==4.4'.
+#13 286.9 Got zope.cachedescriptors 4.4.
+#13 288.8 Getting distribution for 'pytz==2022.7'.
+#13 289.4 Got pytz 2022.7.
+#13 290.4 Getting distribution for 'WebTest==2.0.35'.
+#13 290.7 Got WebTest 2.0.35.
+#13 291.7 Getting distribution for 'WSGIProxy2==0.4.6'.
+#13 292.1 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 292.2 no previously-included directories found matching 'docs/_build'
+#13 292.2 warning: no previously-included files matching '*.pyc' found anywhere in distribution
+#13 292.2 warning: no previously-included files matching '__pycache__' found anywhere in distribution
+#13 292.3 Got WSGIProxy2 0.4.6.
+#13 293.2 Getting distribution for 'SoupSieve==1.9.6'.
+#13 293.5 Got soupsieve 1.9.6.
+#13 294.4 Getting distribution for 'BeautifulSoup4==4.9.3'.
+#13 294.7 Got beautifulsoup4 4.9.3.
+#13 295.6 Getting distribution for 'zope.deprecation==4.4.0'.
+#13 295.9 Got zope.deprecation 4.4.0.
+#13 296.7 Getting distribution for 'zope.annotation==4.8'.
+#13 297.0 Got zope.annotation 4.8.
+#13 297.6 Getting distribution for 'multipart==0.1.1'.
+#13 297.9 Got multipart 0.1.1.
+#13 298.5 Getting distribution for 'python-gettext==4.1'.
+#13 298.8 Got python-gettext 4.1.
+#13 299.8 Getting distribution for 'zope.filerepresentation==5.0.0'.
+#13 300.1 Got zope.filerepresentation 5.0.0.
+#13 301.0 Getting distribution for 'zope.dottedname==4.3'.
+#13 301.4 Got zope.dottedname 4.3.
+#13 302.6 Getting distribution for 'zope.hookable==5.4'.
+#13 303.0 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 303.2 Got zope.hookable 5.4.
+#13 304.1 Getting distribution for 'zope.structuredtext==4.4'.
+#13 304.6 Got zope.structuredtext 4.4.
+#13 305.2 Getting distribution for 'roman==3.3'.
+#13 305.5 Got roman 3.3.
+#13 306.1 Getting distribution for 'funcsigs==1.0.2'.
+#13 306.4 Got funcsigs 1.0.2.
+#13 307.3 Getting distribution for 'AuthEncoding==4.3'.
+#13 307.5 Got AuthEncoding 4.3.
+#13 309.7 Getting distribution for 'cffi==1.15.1'.
+#13 310.3 Got cffi 1.15.1.
+#13 311.3 Getting distribution for 'WebOb==1.8.7'.
+#13 311.7 Got WebOb 1.8.7.
+#13 312.6 Getting distribution for 'backports.functools-lru-cache==1.6.4'.
+#13 312.9 Got backports.functools-lru-cache 1.6.4.
+#13 313.5 Getting distribution for 'pycparser==2.21'.
+#13 313.9 Got pycparser 2.21.
+#13 314.9 Getting distribution for 'plone.recipe.zeoserver==2.0.3'.
+#13 315.3 Got plone.recipe.zeoserver 2.0.3.
+#13 316.2 Getting distribution for 'zope.mkzeoinstance==4.1'.
+#13 316.7 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 316.8 Got zope.mkzeoinstance 4.1.
+#13 317.7 Getting distribution for 'ZopeUndo==4.3'.
+#13 318.1 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 318.2 warning: no previously-included files matching '*.pyc' found anywhere in distribution
+#13 318.2 warning: no previously-included files matching '*.pyo' found anywhere in distribution
+#13 318.2 Got ZopeUndo 4.3.
+#13 319.3 Getting distribution for 'collective.recipe.backup==4.1.0'.
+#13 319.9 Got collective.recipe.backup 4.1.0.
+#13 321.0 Getting distribution for 'plone.recipe.unifiedinstaller==5.2b1'.
+#13 321.4 Got plone.recipe.unifiedinstaller 5.2b1.
+#13 322.4 Getting distribution for 'plone.recipe.command==1.1'.
+#13 322.8 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 322.9 Got plone.recipe.command 1.1.
+#13 323.7 Getting distribution for 'plone.recipe.precompiler==0.7.2'.
+#13 324.0 Got plone.recipe.precompiler 0.7.2.
+#13 325.0 Getting distribution for 'collective.recipe.plonesite'.
+#13 325.4 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 325.4 warning: no previously-included files matching '*.pyc' found anywhere in distribution
+#13 325.5 Got collective.recipe.plonesite 1.12.0.
+#13 325.6 Unused options for buildout: 'deprecation-warnings' 'effective-user'.
+#13 325.6 Installing _mr.developer.
+#13 325.7 Generated script '/home/senaite/senaitelims/bin/develop'.
+#13 325.7 Installing instance.
+#13 327.1 Getting distribution for 'Plone==5.2.14'.
+#13 327.3 Got Plone 5.2.14.
+#13 328.5 Getting distribution for 'requests==2.27.1'.
+#13 329.0 Got requests 2.27.1.
+#13 329.8 Getting distribution for 'openpyxl==2.6.4'.
+#13 330.3 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 330.4 no previously-included directories found matching 'openpyxl/sample'
+#13 330.4 no previously-included directories found matching 'openpyxl/benchmarks'
+#13 330.4 no previously-included directories found matching 'openpyxl/develop'
+#13 330.4 no previously-included directories found matching 'scratchpad'
+#13 330.4 no previously-included directories found matching 'doc'
+#13 330.5 zip_safe flag not set; analyzing archive contents...
+#13 332.4 Got openpyxl 2.6.4.
+#13 333.0 Getting distribution for 'xlrd'.
+#13 333.4 Got xlrd 2.0.1.
+#13 334.6 Getting distribution for 'plone.app.dexterity==2.6.11'.
+#13 335.1 Got plone.app.dexterity 2.6.11.
+#13 337.1 Getting distribution for 'plone.restapi==7.8.3'.
+#13 338.7 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 342.1 Got plone.restapi 7.8.3.
+#13 343.1 Getting distribution for 'plone.api==1.11.1'.
+#13 343.4 Got plone.api 1.11.1.
+#13 344.3 Getting distribution for 'z3c.jbot==1.1.1'.
+#13 344.6 Got z3c.jbot 1.1.1.
+#13 345.6 Getting distribution for 'senaite.api'.
+#13 345.9 Got senaite.api 1.2.3.post2.
+#13 347.3 Getting distribution for 'plone.app.upgrade==2.1.7'.
+#13 347.7 Got plone.app.upgrade 2.1.7.
+#13 348.7 Getting distribution for 'plone.app.iterate==4.0.3'.
+#13 349.2 Got plone.app.iterate 4.0.3.
+#13 350.2 Getting distribution for 'plone.app.caching==2.2.1'.
+#13 350.6 Got plone.app.caching 2.2.1.
+#13 352.2 Getting distribution for 'Products.CMFPlone==5.2.14'.
+#13 352.9 Got Products.CMFPlone 5.2.14.
+#13 354.0 Getting distribution for 'Products.CMFPlacefulWorkflow==2.0.4'.
+#13 354.3 Got Products.CMFPlacefulWorkflow 2.0.4.
+#13 355.5 Getting distribution for 'urllib3==1.26.13'.
+#13 355.8 Got urllib3 1.26.13.
+#13 356.4 Getting distribution for 'idna==2.10'.
+#13 356.7 Got idna 2.10.
+#13 357.2 Getting distribution for 'chardet==4.0.0'.
+#13 357.6 Got chardet 4.0.0.
+#13 358.3 Getting distribution for 'certifi==2020.4.5.1'.
+#13 358.7 Got certifi 2020.4.5.1.
+#13 359.7 Getting distribution for 'et_xmlfile'.
+#13 360.1 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 360.1 no previously-included directories found matching 'et_xmlfile/tests/'
+#13 360.1 zip_safe flag not set; analyzing archive contents...
+#13 360.2 Got et-xmlfile 1.1.0.
+#13 360.7 Getting distribution for 'jdcal'.
+#13 361.0 Got jdcal 1.4.1.
+#13 361.8 Getting distribution for 'pycountry==18.12.8'.
+#13 367.2 Got pycountry 18.12.8.
+#13 368.2 Getting distribution for 'collective.z3cform.datagridfield==1.5.3'.
+#13 368.5 Got collective.z3cform.datagridfield 1.5.3.
+#13 369.6 Getting distribution for 'Werkzeug<2.0.0'.
+#13 370.1 Got Werkzeug 1.0.1.
+#13 371.1 Getting distribution for 'plone.app.jquerytools'.
+#13 371.6 Got plone.app.jquerytools 1.9.5.
+#13 372.2 Getting distribution for 'cssselect2<0.3.0'.
+#13 372.5 Got cssselect2 0.2.2.
+#13 373.2 Getting distribution for 'more-itertools<6.0.0'.
+#13 373.5 Got more-itertools 5.0.0.
+#13 376.3 Getting distribution for 'Pillow==6.2.2'.
+#13 377.3 Got Pillow 6.2.2.
+#13 377.9 Getting distribution for 'tinycss2<1.0.0'.
+#13 378.2 Got tinycss2 0.6.1.
+#13 379.3 Getting distribution for 'Products.contentmigration==2.2.2'.
+#13 379.6 Got Products.contentmigration 2.2.2.
+#13 380.6 Getting distribution for 'Products.DataGridField'.
+#13 381.1 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 381.1 warning: no files found matching '*txt'
+#13 381.1 warning: no previously-included files found matching 'bootstrap.py'
+#13 381.1 warning: no previously-included files matching '*.pyc' found anywhere in distribution
+#13 381.2   File "build/bdist.linux-x86_64/egg/Products/DataGridField/skins/DataGridWidget/queryDataGrid.py", line 26
+#13 381.2     return query(obj, *args)
+#13 381.2 SyntaxError: 'return' outside function
+#13 381.2 
+#13 381.2   File "/home/senaite/senaitelims/eggs/cp27mu/tmpyJ5Zzy/Products.DataGridField-1.9.6-py2.7.egg/Products/DataGridField/skins/DataGridWidget/queryDataGrid.py", line 26
+#13 381.2     return query(obj, *args)
+#13 381.2 SyntaxError: 'return' outside function
+#13 381.2 
+#13 381.6 Got Products.DataGridField 1.9.6.
+#13 382.6 Getting distribution for 'Products.CMFEditions==3.3.5'.
+#13 383.0 Got Products.CMFEditions 3.3.5.
+#13 384.2 Getting distribution for 'Products.ATContentTypes==3.0.7'.
+#13 384.7 Got Products.ATContentTypes 3.0.7.
+#13 385.7 Getting distribution for 'plone.subrequest==1.9.3'.
+#13 386.1 Got plone.subrequest 1.9.3.
+#13 386.9 Getting distribution for 'plone.resource==2.1.4'.
+#13 387.3 Got plone.resource 2.1.4.
+#13 388.2 Getting distribution for 'plone.jsonapi.core'.
+#13 388.6 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 388.8 Got plone.jsonapi.core 0.7.0.
+#13 390.0 Getting distribution for 'plone.app.z3cform==3.2.4'.
+#13 390.4 Got plone.app.z3cform 3.2.4.
+#13 391.4 Getting distribution for 'plone.app.relationfield==2.0.3'.
+#13 391.8 Got plone.app.relationfield 2.0.3.
+#13 392.7 Getting distribution for 'plone.app.referenceablebehavior==0.7.9'.
+#13 393.1 Got plone.app.referenceablebehavior 0.7.9.
+#13 393.7 Getting distribution for 'magnitude'.
+#13 394.1 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 394.2 zip_safe flag not set; analyzing archive contents...
+#13 394.2 Got magnitude 1.0.1.
+#13 395.1 Getting distribution for 'collective.monkeypatcher==1.2.1'.
+#13 395.4 Got collective.monkeypatcher 1.2.1.
+#13 396.4 Getting distribution for 'z3c.form==3.7.1'.
+#13 397.1 Got z3c.form 3.7.1.
+#13 398.1 Getting distribution for 'plone.z3cform==1.1.3'.
+#13 398.5 Got plone.z3cform 1.1.3.
+#13 399.4 Getting distribution for 'plone.supermodel==1.6.5'.
+#13 399.8 Got plone.supermodel 1.6.5.
+#13 400.8 Getting distribution for 'plone.schemaeditor==3.0.3'.
+#13 401.1 Got plone.schemaeditor 3.0.3.
+#13 402.0 Getting distribution for 'plone.schema==1.4.0'.
+#13 402.6 Got plone.schema 1.4.0.
+#13 403.4 Getting distribution for 'plone.rfc822==2.0.2'.
+#13 403.7 Got plone.rfc822 2.0.2.
+#13 404.6 Getting distribution for 'plone.portlets==2.3.3'.
+#13 405.0 Got plone.portlets 2.3.3.
+#13 406.1 Getting distribution for 'plone.namedfile==5.6.1'.
+#13 406.6 Got plone.namedfile 5.6.1.
+#13 407.5 Getting distribution for 'plone.formwidget.namedfile==2.1.3'.
+#13 407.8 Got plone.formwidget.namedfile 2.1.3.
+#13 408.8 Getting distribution for 'plone.dexterity==2.10.5'.
+#13 409.2 Got plone.dexterity 2.10.5.
+#13 410.2 Getting distribution for 'plone.contentrules==2.1.3'.
+#13 410.5 Got plone.contentrules 2.1.3.
+#13 411.3 Getting distribution for 'plone.behavior==1.4.0'.
+#13 411.6 Got plone.behavior 1.4.0.
+#13 412.5 Getting distribution for 'plone.autoform==1.9.1'.
+#13 412.8 Got plone.autoform 1.9.1.
+#13 413.6 Getting distribution for 'plone.app.uuid==2.0.2'.
+#13 413.9 Got plone.app.uuid 2.0.2.
+#13 414.8 Getting distribution for 'plone.app.textfield==1.3.7'.
+#13 415.2 Got plone.app.textfield 1.3.7.
+#13 416.6 Getting distribution for 'plone.app.layout==3.5.2'.
+#13 417.1 Got plone.app.layout 3.5.2.
+#13 418.3 Getting distribution for 'plone.app.content==3.8.10'.
+#13 418.8 Got plone.app.content 3.8.10.
+#13 421.7 Getting distribution for 'lxml==4.8.0'.
+#13 426.6 Got lxml 4.8.0.
+#13 427.6 Getting distribution for 'Zope2==4.0'.
+#13 428.0 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 428.1 warning: install_lib: 'build/lib' does not exist -- no Python modules to install
+#13 428.1 
+#13 428.1 Got Zope2 4.0.
+#13 429.1 Getting distribution for 'Products.GenericSetup==2.3.0'.
+#13 429.6 Got Products.GenericSetup 2.3.0.
+#13 430.8 Getting distribution for 'Products.CMFCore==2.7.1'.
+#13 431.3 Got Products.CMFCore 2.7.1.
+#13 432.3 Getting distribution for 'PyJWT==1.7.1'.
+#13 432.6 Got PyJWT 1.7.1.
+#13 433.6 Getting distribution for 'plone.rest==1.6.2'.
+#13 434.0 Got plone.rest 1.6.2.
+#13 434.6 Getting distribution for 'python-dateutil==2.8.2'.
+#13 435.0 Got python-dateutil 2.8.2.
+#13 435.9 Getting distribution for 'plone.uuid==1.0.6'.
+#13 436.2 Got plone.uuid 1.0.6.
+#13 437.3 Getting distribution for 'plone.app.linkintegrity==3.6.1'.
+#13 437.7 Got plone.app.linkintegrity 3.6.1.
+#13 438.3 Getting distribution for 'decorator==4.4.2'.
+#13 438.6 Got decorator 4.4.2.
+#13 439.5 Getting distribution for 'Products.statusmessages==5.0.5'.
+#13 439.9 Got Products.statusmessages 5.0.5.
+#13 440.5 Getting distribution for 'pyphen==0.11.0'.
+#13 441.7 WARNING: The easy_install command is deprecated and will be removed in a future version.
+#13 441.8 zip_safe flag not set; analyzing archive contents...
+#13 441.8 pyphen.__init__: module references __file__
+#13 442.1 Got pyphen 0.11.0.
+#13 443.3 Getting distribution for 'WeasyPrint==0.42.3'.
+#13 443.8 While:
+#13 443.8   Installing instance.
+#13 443.8   Getting distribution for 'WeasyPrint==0.42.3'.
+#13 443.8 Error: sha256 validation failed for WeasyPrint-0.42.3.tar.gz; possible download problem?
+#13 ERROR: process "/bin/sh -c apt-get update     && apt-get install -y --no-install-recommends $(grep -vE \"^\\s*#\" /build_deps.txt | tr \"\\n\" \" \")     && apt-get install -y --no-install-recommends $(grep -vE \"^\\s*#\" /run_deps.txt | tr \"\\n\" \" \")     && wget -O Plone.tgz https://launchpad.net/plone/$PLONE_MAJOR/$PLONE_VERSION/+download/$PLONE_UNIFIED_INSTALLER.tgz     && echo \"$PLONE_MD5 Plone.tgz\" | md5sum -c -     && tar -xzf /Plone.tgz     && cp -rv $PLONE_UNIFIED_INSTALLER/base_skeleton/* $SENAITE_INSTANCE_HOME     && cp -v $PLONE_UNIFIED_INSTALLER/buildout_templates/buildout.cfg $SENAITE_INSTANCE_HOME/buildout-base.cfg     && rm -rf $PLONE_UNIFIED_INSTALLER Plone.tgz     && cd $SENAITE_INSTANCE_HOME     && pip install -r requirements.txt     && buildout     && ln -s $SENAITE_FILESTORAGE/ var/filestorage     && ln -s $SENAITE_BLOBSTORAGE/ var/blobstorage     && chown -R senaite:senaite $SENAITE_HOME $SENAITE_DATA     && apt-get purge -y --auto-remove $(grep -vE \"^\\s*#\" /build_deps.txt  | tr \"\\n\" \" \")     && rm -rf /$SENAITE_HOME/buildout-cache     && rm -rf /var/lib/apt/lists/*" did not complete successfully: exit code: 1
+------
+ > [8/9] RUN apt-get update     && apt-get install -y --no-install-recommends $(grep -vE "^\s*#" /build_deps.txt | tr "\n" " ")     && apt-get install -y --no-install-recommends $(grep -vE "^\s*#" /run_deps.txt | tr "\n" " ")     && wget -O Plone.tgz https://launchpad.net/plone/5.2/5.2.14/+download/Plone-5.2.14-UnifiedInstaller-1.0.tgz     && echo "e8e1f774f069026319be3038631e0734 Plone.tgz" | md5sum -c -     && tar -xzf /Plone.tgz     && cp -rv Plone-5.2.14-UnifiedInstaller-1.0/base_skeleton/* /home/senaite/senaitelims     && cp -v Plone-5.2.14-UnifiedInstaller-1.0/buildout_templates/buildout.cfg /home/senaite/senaitelims/buildout-base.cfg     && rm -rf Plone-5.2.14-UnifiedInstaller-1.0 Plone.tgz     && cd /home/senaite/senaitelims     && pip install -r requirements.txt     && buildout     && ln -s /data/filestorage/ var/filestorage     && ln -s /data/blobstorage/ var/blobstorage     && chown -R senaite:senaite /home/senaite /data     && apt-get purge -y --auto-remove $(grep -vE "^\s*#" /build_deps.txt  | tr "\n" " ")     && rm -rf //home/senaite/buildout-cache     && rm -rf /var/lib/apt/lists/*:
+440.5 Getting distribution for 'pyphen==0.11.0'.
+441.7 WARNING: The easy_install command is deprecated and will be removed in a future version.
+441.8 zip_safe flag not set; analyzing archive contents...
+441.8 pyphen.__init__: module references __file__
+442.1 Got pyphen 0.11.0.
+443.3 Getting distribution for 'WeasyPrint==0.42.3'.
+443.8 While:
+443.8   Installing instance.
+443.8   Getting distribution for 'WeasyPrint==0.42.3'.
+443.8 Error: sha256 validation failed for WeasyPrint-0.42.3.tar.gz; possible download problem?
+------
+Dockerfile:39
+--------------------
+  38 |     # Note: we concatenate all commands to avoid multiple layer generation and reduce the image size
+  39 | >>> RUN apt-get update \
+  40 | >>>     # Install system packages
+  41 | >>>     && apt-get install -y --no-install-recommends $(grep -vE "^\s*#" /build_deps.txt | tr "\n" " ") \
+  42 | >>>     && apt-get install -y --no-install-recommends $(grep -vE "^\s*#" /run_deps.txt | tr "\n" " ") \
+  43 | >>>     # Fetch unified installer
+  44 | >>>     && wget -O Plone.tgz https://launchpad.net/plone/$PLONE_MAJOR/$PLONE_VERSION/+download/$PLONE_UNIFIED_INSTALLER.tgz \
+  45 | >>>     && echo "$PLONE_MD5 Plone.tgz" | md5sum -c - \
+  46 | >>>     && tar -xzf /Plone.tgz \
+  47 | >>>     && cp -rv $PLONE_UNIFIED_INSTALLER/base_skeleton/* $SENAITE_INSTANCE_HOME \
+  48 | >>>     && cp -v $PLONE_UNIFIED_INSTALLER/buildout_templates/buildout.cfg $SENAITE_INSTANCE_HOME/buildout-base.cfg \
+  49 | >>>     && rm -rf $PLONE_UNIFIED_INSTALLER Plone.tgz \
+  50 | >>>     # Buildout
+  51 | >>>     && cd $SENAITE_INSTANCE_HOME \
+  52 | >>>     && pip install -r requirements.txt \
+  53 | >>>     && buildout \
+  54 | >>>     && ln -s $SENAITE_FILESTORAGE/ var/filestorage \
+  55 | >>>     && ln -s $SENAITE_BLOBSTORAGE/ var/blobstorage \
+  56 | >>>     && chown -R senaite:senaite $SENAITE_HOME $SENAITE_DATA \
+  57 | >>>     # Cleanup
+  58 | >>>     && apt-get purge -y --auto-remove $(grep -vE "^\s*#" /build_deps.txt  | tr "\n" " ") \
+  59 | >>>     && rm -rf /$SENAITE_HOME/buildout-cache \
+  60 | >>>     && rm -rf /var/lib/apt/lists/*
+  61 |     
+--------------------
+ERROR: failed to solve: process "/bin/sh -c apt-get update     && apt-get install -y --no-install-recommends $(grep -vE \"^\\s*#\" /build_deps.txt | tr \"\\n\" \" \")     && apt-get install -y --no-install-recommends $(grep -vE \"^\\s*#\" /run_deps.txt | tr \"\\n\" \" \")     && wget -O Plone.tgz https://launchpad.net/plone/$PLONE_MAJOR/$PLONE_VERSION/+download/$PLONE_UNIFIED_INSTALLER.tgz     && echo \"$PLONE_MD5 Plone.tgz\" | md5sum -c -     && tar -xzf /Plone.tgz     && cp -rv $PLONE_UNIFIED_INSTALLER/base_skeleton/* $SENAITE_INSTANCE_HOME     && cp -v $PLONE_UNIFIED_INSTALLER/buildout_templates/buildout.cfg $SENAITE_INSTANCE_HOME/buildout-base.cfg     && rm -rf $PLONE_UNIFIED_INSTALLER Plone.tgz     && cd $SENAITE_INSTANCE_HOME     && pip install -r requirements.txt     && buildout     && ln -s $SENAITE_FILESTORAGE/ var/filestorage     && ln -s $SENAITE_BLOBSTORAGE/ var/blobstorage     && chown -R senaite:senaite $SENAITE_HOME $SENAITE_DATA     && apt-get purge -y --auto-remove $(grep -vE \"^\\s*#\" /build_deps.txt  | tr \"\\n\" \" \")     && rm -rf /$SENAITE_HOME/buildout-cache     && rm -rf /var/lib/apt/lists/*" did not complete successfully: exit code: 1
