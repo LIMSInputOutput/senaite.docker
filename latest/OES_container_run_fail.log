@@ -1,0 +1,308 @@
+2024-08-22 17:45:25 git config --global --add safe.directory /home/senaite/senaitelims/src/senaite.lims
+2024-08-22 17:45:25 git config --global --add safe.directory /home/senaite/senaitelims/src/senaite.core
+2024-08-22 17:45:25 git config --global --add safe.directory /home/senaite/senaitelims/src/senaite.storage
+2024-08-22 17:45:25 git config --global --add safe.directory /home/senaite/senaitelims/src/senaite.app.supermodel
+2024-08-22 17:45:25 git config --global --add safe.directory /home/senaite/senaitelims/src/senaite.lis2a
+2024-08-22 17:45:25 git config --global --add safe.directory /home/senaite/senaitelims/src/senaite.app.spotlight
+2024-08-22 17:45:25 git config --global --add safe.directory /home/senaite/senaitelims/src/senaite.jsonapi
+2024-08-22 17:45:25 git config --global --add safe.directory /home/senaite/senaitelims/src/senaite.instruments
+2024-08-22 17:45:25 git config --global --add safe.directory /home/senaite/senaitelims/src/senaite.databox
+2024-08-22 17:45:25 git config --global --add safe.directory /home/senaite/senaitelims/src/senaite.app.listing
+2024-08-22 17:45:25 git config --global --add safe.directory /home/senaite/senaitelims/src/senaite.impress
+2024-08-22 17:45:28 2024-08-22 22:45:28,101 INFO    [chameleon.config:38][MainThread] directory cache: /data/cache.
+2024-08-22 17:45:28 2024-08-22 22:45:28,101 INFO    [chameleon.config:38][MainThread] directory cache: /data/cache.
+2024-08-22 17:45:28 2024-08-22 22:45:28,720 INFO    [ZODB.blob:356][MainThread] (1) Blob directory `/data/blobstorage` is unused and has no layout marker set. Selected `bushy` layout. 
+2024-08-22 17:45:28 2024-08-22 22:45:28,720 INFO    [ZODB.blob:356][MainThread] (1) Blob directory `/data/blobstorage` is unused and has no layout marker set. Selected `bushy` layout. 
+2024-08-22 17:45:28 2024-08-22 22:45:28,720 INFO    [ZODB.blob:356][MainThread] (1) Blob temporary directory '/data/blobstorage/tmp' does not exist. Created new directory.
+2024-08-22 17:45:28 2024-08-22 22:45:28,720 INFO    [ZODB.blob:356][MainThread] (1) Blob temporary directory '/data/blobstorage/tmp' does not exist. Created new directory.
+2024-08-22 17:45:30 Traceback (most recent call last):
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/parts/instance/bin/interpreter", line 341, in <module>
+2024-08-22 17:45:30     exec(compile(__file__f.read(), __file__, "exec"))
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/Zope-4.8.10-py2.7.egg/Zope2/Startup/serve.py", line 255, in <module>
+2024-08-22 17:45:30     sys.exit(main() or 0)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/Zope-4.8.10-py2.7.egg/Zope2/Startup/serve.py", line 251, in main
+2024-08-22 17:45:30     return command.run()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/Zope-4.8.10-py2.7.egg/Zope2/Startup/serve.py", line 190, in run
+2024-08-22 17:45:30     global_conf=vars)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/Zope-4.8.10-py2.7.egg/Zope2/Startup/serve.py", line 220, in loadapp
+2024-08-22 17:45:30     return loadapp(app_spec, name=name, relative_to=relative_to, **kw)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/PasteDeploy-2.1.1-py2.7.egg/paste/deploy/loadwsgi.py", line 253, in loadapp
+2024-08-22 17:45:30     return loadobj(APP, uri, name=name, **kw)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/PasteDeploy-2.1.1-py2.7.egg/paste/deploy/loadwsgi.py", line 278, in loadobj
+2024-08-22 17:45:30     return context.create()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/PasteDeploy-2.1.1-py2.7.egg/paste/deploy/loadwsgi.py", line 715, in create
+2024-08-22 17:45:30     return self.object_type.invoke(self)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/PasteDeploy-2.1.1-py2.7.egg/paste/deploy/loadwsgi.py", line 209, in invoke
+2024-08-22 17:45:30     app = context.app_context.create()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/PasteDeploy-2.1.1-py2.7.egg/paste/deploy/loadwsgi.py", line 715, in create
+2024-08-22 17:45:30     return self.object_type.invoke(self)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/PasteDeploy-2.1.1-py2.7.egg/paste/deploy/loadwsgi.py", line 152, in invoke
+2024-08-22 17:45:30     return fix_call(context.object, context.global_conf, **context.local_conf)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/PasteDeploy-2.1.1-py2.7.egg/paste/deploy/util.py", line 55, in fix_call
+2024-08-22 17:45:30     val = callable(*args, **kw)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/Zope-4.8.10-py2.7.egg/Zope2/Startup/run.py", line 72, in make_wsgi_app
+2024-08-22 17:45:30     starter.prepare()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/Zope-4.8.10-py2.7.egg/Zope2/Startup/starter.py", line 41, in prepare
+2024-08-22 17:45:30     self.startZope()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/Zope-4.8.10-py2.7.egg/Zope2/Startup/starter.py", line 99, in startZope
+2024-08-22 17:45:30     Zope2.startup_wsgi()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/Zope-4.8.10-py2.7.egg/Zope2/__init__.py", line 50, in startup_wsgi
+2024-08-22 17:45:30     _startup()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/Zope-4.8.10-py2.7.egg/Zope2/App/startup.py", line 143, in startup
+2024-08-22 17:45:30     load_zcml()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/Zope-4.8.10-py2.7.egg/Zope2/App/startup.py", line 58, in load_zcml
+2024-08-22 17:45:30     load_site()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/Zope-4.8.10-py2.7.egg/Zope2/App/zcml.py", line 45, in load_site
+2024-08-22 17:45:30     _context = xmlconfig.file(site_zcml)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 663, in file
+2024-08-22 17:45:30     include(context, name, package)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 560, in include
+2024-08-22 17:45:30     processxmlfile(f, context)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 409, in processxmlfile
+2024-08-22 17:45:30     parser.parse(src)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 111, in parse
+2024-08-22 17:45:30     xmlreader.IncrementalParser.parse(self, source)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/xmlreader.py", line 123, in parse
+2024-08-22 17:45:30     self.feed(buffer)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 220, in feed
+2024-08-22 17:45:30     self._parser.Parse(data, isFinal)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 384, in end_element_ns
+2024-08-22 17:45:30     self._cont_handler.endElementNS(pair, None)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 395, in endElementNS
+2024-08-22 17:45:30     self._handle_exception(ex, info)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 393, in endElementNS
+2024-08-22 17:45:30     self.context.end()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 703, in end
+2024-08-22 17:45:30     self.stack.pop().finish()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 873, in finish
+2024-08-22 17:45:30     actions = self.handler(context, **args)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/Zope-4.8.10-py2.7.egg/OFS/metaconfigure.py", line 47, in loadProducts
+2024-08-22 17:45:30     xmlconfig.include(_context, zcml, package=product)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 560, in include
+2024-08-22 17:45:30     processxmlfile(f, context)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 409, in processxmlfile
+2024-08-22 17:45:30     parser.parse(src)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 111, in parse
+2024-08-22 17:45:30     xmlreader.IncrementalParser.parse(self, source)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/xmlreader.py", line 123, in parse
+2024-08-22 17:45:30     self.feed(buffer)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 220, in feed
+2024-08-22 17:45:30     self._parser.Parse(data, isFinal)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 384, in end_element_ns
+2024-08-22 17:45:30     self._cont_handler.endElementNS(pair, None)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 395, in endElementNS
+2024-08-22 17:45:30     self._handle_exception(ex, info)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 393, in endElementNS
+2024-08-22 17:45:30     self.context.end()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 703, in end
+2024-08-22 17:45:30     self.stack.pop().finish()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 873, in finish
+2024-08-22 17:45:30     actions = self.handler(context, **args)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 560, in include
+2024-08-22 17:45:30     processxmlfile(f, context)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 409, in processxmlfile
+2024-08-22 17:45:30     parser.parse(src)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 111, in parse
+2024-08-22 17:45:30     xmlreader.IncrementalParser.parse(self, source)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/xmlreader.py", line 123, in parse
+2024-08-22 17:45:30     self.feed(buffer)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 220, in feed
+2024-08-22 17:45:30     self._parser.Parse(data, isFinal)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 384, in end_element_ns
+2024-08-22 17:45:30     self._cont_handler.endElementNS(pair, None)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 395, in endElementNS
+2024-08-22 17:45:30     self._handle_exception(ex, info)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 393, in endElementNS
+2024-08-22 17:45:30     self.context.end()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 703, in end
+2024-08-22 17:45:30     self.stack.pop().finish()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 873, in finish
+2024-08-22 17:45:30     actions = self.handler(context, **args)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 560, in include
+2024-08-22 17:45:30     processxmlfile(f, context)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 409, in processxmlfile
+2024-08-22 17:45:30     parser.parse(src)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 111, in parse
+2024-08-22 17:45:30     xmlreader.IncrementalParser.parse(self, source)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/xmlreader.py", line 123, in parse
+2024-08-22 17:45:30     self.feed(buffer)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 220, in feed
+2024-08-22 17:45:30     self._parser.Parse(data, isFinal)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 384, in end_element_ns
+2024-08-22 17:45:30     self._cont_handler.endElementNS(pair, None)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 395, in endElementNS
+2024-08-22 17:45:30     self._handle_exception(ex, info)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 393, in endElementNS
+2024-08-22 17:45:30     self.context.end()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 703, in end
+2024-08-22 17:45:30     self.stack.pop().finish()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 873, in finish
+2024-08-22 17:45:30     actions = self.handler(context, **args)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 560, in include
+2024-08-22 17:45:30     processxmlfile(f, context)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 409, in processxmlfile
+2024-08-22 17:45:30     parser.parse(src)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 111, in parse
+2024-08-22 17:45:30     xmlreader.IncrementalParser.parse(self, source)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/xmlreader.py", line 123, in parse
+2024-08-22 17:45:30     self.feed(buffer)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 220, in feed
+2024-08-22 17:45:30     self._parser.Parse(data, isFinal)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 384, in end_element_ns
+2024-08-22 17:45:30     self._cont_handler.endElementNS(pair, None)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 395, in endElementNS
+2024-08-22 17:45:30     self._handle_exception(ex, info)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 393, in endElementNS
+2024-08-22 17:45:30     self.context.end()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 703, in end
+2024-08-22 17:45:30     self.stack.pop().finish()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 873, in finish
+2024-08-22 17:45:30     actions = self.handler(context, **args)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 560, in include
+2024-08-22 17:45:30     processxmlfile(f, context)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 409, in processxmlfile
+2024-08-22 17:45:30     parser.parse(src)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 111, in parse
+2024-08-22 17:45:30     xmlreader.IncrementalParser.parse(self, source)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/xmlreader.py", line 123, in parse
+2024-08-22 17:45:30     self.feed(buffer)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 220, in feed
+2024-08-22 17:45:30     self._parser.Parse(data, isFinal)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 384, in end_element_ns
+2024-08-22 17:45:30     self._cont_handler.endElementNS(pair, None)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 395, in endElementNS
+2024-08-22 17:45:30     self._handle_exception(ex, info)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 393, in endElementNS
+2024-08-22 17:45:30     self.context.end()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 703, in end
+2024-08-22 17:45:30     self.stack.pop().finish()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 873, in finish
+2024-08-22 17:45:30     actions = self.handler(context, **args)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 560, in include
+2024-08-22 17:45:30     processxmlfile(f, context)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 409, in processxmlfile
+2024-08-22 17:45:30     parser.parse(src)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 111, in parse
+2024-08-22 17:45:30     xmlreader.IncrementalParser.parse(self, source)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/xmlreader.py", line 123, in parse
+2024-08-22 17:45:30     self.feed(buffer)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 220, in feed
+2024-08-22 17:45:30     self._parser.Parse(data, isFinal)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 384, in end_element_ns
+2024-08-22 17:45:30     self._cont_handler.endElementNS(pair, None)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 395, in endElementNS
+2024-08-22 17:45:30     self._handle_exception(ex, info)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 393, in endElementNS
+2024-08-22 17:45:30     self.context.end()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 703, in end
+2024-08-22 17:45:30     self.stack.pop().finish()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 873, in finish
+2024-08-22 17:45:30     actions = self.handler(context, **args)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 560, in include
+2024-08-22 17:45:30     processxmlfile(f, context)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 409, in processxmlfile
+2024-08-22 17:45:30     parser.parse(src)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 111, in parse
+2024-08-22 17:45:30     xmlreader.IncrementalParser.parse(self, source)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/xmlreader.py", line 123, in parse
+2024-08-22 17:45:30     self.feed(buffer)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 220, in feed
+2024-08-22 17:45:30     self._parser.Parse(data, isFinal)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 384, in end_element_ns
+2024-08-22 17:45:30     self._cont_handler.endElementNS(pair, None)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 395, in endElementNS
+2024-08-22 17:45:30     self._handle_exception(ex, info)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 393, in endElementNS
+2024-08-22 17:45:30     self.context.end()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 703, in end
+2024-08-22 17:45:30     self.stack.pop().finish()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 873, in finish
+2024-08-22 17:45:30     actions = self.handler(context, **args)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 560, in include
+2024-08-22 17:45:30     processxmlfile(f, context)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 409, in processxmlfile
+2024-08-22 17:45:30     parser.parse(src)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 111, in parse
+2024-08-22 17:45:30     xmlreader.IncrementalParser.parse(self, source)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/xmlreader.py", line 123, in parse
+2024-08-22 17:45:30     self.feed(buffer)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 220, in feed
+2024-08-22 17:45:30     self._parser.Parse(data, isFinal)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 384, in end_element_ns
+2024-08-22 17:45:30     self._cont_handler.endElementNS(pair, None)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 395, in endElementNS
+2024-08-22 17:45:30     self._handle_exception(ex, info)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 393, in endElementNS
+2024-08-22 17:45:30     self.context.end()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 703, in end
+2024-08-22 17:45:30     self.stack.pop().finish()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 873, in finish
+2024-08-22 17:45:30     actions = self.handler(context, **args)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/z3c.autoinclude-0.4.1-py2.7.egg/z3c/autoinclude/zcml.py", line 122, in includePluginsDirective
+2024-08-22 17:45:30     includeZCMLGroup(_context, info, filename)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/z3c.autoinclude-0.4.1-py2.7.egg/z3c/autoinclude/zcml.py", line 37, in includeZCMLGroup
+2024-08-22 17:45:30     include(_context, filename, includable_package)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 560, in include
+2024-08-22 17:45:30     processxmlfile(f, context)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 409, in processxmlfile
+2024-08-22 17:45:30     parser.parse(src)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 111, in parse
+2024-08-22 17:45:30     xmlreader.IncrementalParser.parse(self, source)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/xmlreader.py", line 123, in parse
+2024-08-22 17:45:30     self.feed(buffer)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 220, in feed
+2024-08-22 17:45:30     self._parser.Parse(data, isFinal)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 384, in end_element_ns
+2024-08-22 17:45:30     self._cont_handler.endElementNS(pair, None)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 395, in endElementNS
+2024-08-22 17:45:30     self._handle_exception(ex, info)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 393, in endElementNS
+2024-08-22 17:45:30     self.context.end()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 703, in end
+2024-08-22 17:45:30     self.stack.pop().finish()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 873, in finish
+2024-08-22 17:45:30     actions = self.handler(context, **args)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 560, in include
+2024-08-22 17:45:30     processxmlfile(f, context)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 409, in processxmlfile
+2024-08-22 17:45:30     parser.parse(src)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 111, in parse
+2024-08-22 17:45:30     xmlreader.IncrementalParser.parse(self, source)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/xmlreader.py", line 123, in parse
+2024-08-22 17:45:30     self.feed(buffer)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 220, in feed
+2024-08-22 17:45:30     self._parser.Parse(data, isFinal)
+2024-08-22 17:45:30   File "/usr/local/lib/python2.7/xml/sax/expatreader.py", line 384, in end_element_ns
+2024-08-22 17:45:30     self._cont_handler.endElementNS(pair, None)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 395, in endElementNS
+2024-08-22 17:45:30     self._handle_exception(ex, info)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 237, in _handle_exception
+2024-08-22 17:45:30     reraise(exc, None, sys.exc_info()[2])
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/xmlconfig.py", line 393, in endElementNS
+2024-08-22 17:45:30     self.context.end()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 703, in end
+2024-08-22 17:45:30     self.stack.pop().finish()
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 872, in finish
+2024-08-22 17:45:30     args = toargs(context, *self.argdata)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 1702, in toargs
+2024-08-22 17:45:30     args[str(name)] = field.fromUnicode(s)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/fields.py", line 271, in fromUnicode
+2024-08-22 17:45:30     v = vt.fromUnicode(s)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/fields.py", line 173, in fromUnicode
+2024-08-22 17:45:30     value = self.context.resolve(name)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/eggs/cp27mu/zope.configuration-4.4.1-py2.7.egg/zope/configuration/config.py", line 225, in resolve
+2024-08-22 17:45:30     __import__(mname)
+2024-08-22 17:45:30   File "/home/senaite/senaitelims/src/senaite.instruments/src/senaite/instruments/instruments/agilent/chemstation/chemstation.py", line 11, in <module>
+2024-08-22 17:45:30     from senaite.core.exportimport.instruments.instrument import format_keyword
+2024-08-22 17:45:30 zope.configuration.xmlconfig.ZopeXMLConfigurationError: File "/home/senaite/senaitelims/src/senaite.instruments/src/senaite/instruments/instruments/configure.zcml", line 5.3-9.81
+2024-08-22 17:45:30     File "/home/senaite/senaitelims/parts/instance/etc/site.zcml", line 16.2-16.23
+2024-08-22 17:45:30     File "/home/senaite/senaitelims/eggs/cp27mu/Products.ATContentTypes-3.0.7-py2.7.egg/Products/ATContentTypes/configure.zcml", line 18.2-18.44
+2024-08-22 17:45:30     File "/home/senaite/senaitelims/eggs/cp27mu/plone.app.collection-1.2.8-py2.7.egg/plone/app/collection/configure.zcml", line 9.2-9.45
+2024-08-22 17:45:30     File "/home/senaite/senaitelims/eggs/cp27mu/plone.app.querystring-1.6.1-py2.7.egg/plone/app/querystring/configure.zcml", line 11.2-11.42
+2024-08-22 17:45:30     File "/home/senaite/senaitelims/eggs/cp27mu/plone.app.registry-1.7.9-py2.7.egg/plone/app/registry/configure.zcml", line 12.4-12.34
+2024-08-22 17:45:30     File "/home/senaite/senaitelims/eggs/cp27mu/plone.app.registry-1.7.9-py2.7.egg/plone/app/registry/browser/configure.zcml", line 6.4-6.43
+2024-08-22 17:45:30     File "/home/senaite/senaitelims/eggs/cp27mu/plone.app.z3cform-3.2.4-py2.7.egg/plone/app/z3cform/configure.zcml", line 10.2-10.41
+2024-08-22 17:45:30     File "/home/senaite/senaitelims/eggs/cp27mu/plone.app.widgets-3.0.7-py2.7.egg/plone/app/widgets/configure.zcml", line 6.2-6.41
+2024-08-22 17:45:30     File "/home/senaite/senaitelims/eggs/cp27mu/Products.CMFPlone-5.2.14-py2.7.egg/Products/CMFPlone/configure.zcml", line 110.2-114.8
+2024-08-22 17:45:30     File "/home/senaite/senaitelims/src/senaite.instruments/src/senaite/instruments/configure.zcml", line 17.2-17.36
+2024-08-22 17:45:30     ImportError: No module named instrument
